@@ -1,0 +1,31 @@
+{
+  "task": "dr",
+  "classes": [
+    "No DR",
+    "DR"
+  ],
+  "model": "ResNet-18 pre-trained on ImageNet",
+  "parameters": 11177538,
+  "image_size": 48,
+  "train_images": 2572,
+  "val_images": 542,
+  "test_images": 548,
+  "epochs": 10,
+  "best_epoch": 9,
+  "val_accuracy": 0.976,
+  "test_accuracy": 0.9653,
+  "sensitivity": 0.9639,
+  "specificity": 0.9668,
+  "precision": 0.9674,
+  "roc_auc": 0.9942,
+  "confusion_matrix": [
+    [
+      262,
+      9
+    ],
+    [
+      10,
+      267
+    ]
+  ]
+}

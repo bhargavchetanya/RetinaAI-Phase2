@@ -1,0 +1,103 @@
+==========================================================
+ TRAINING THE 5-LAYER CNN  -  No DR / DR
+==========================================================
+
+Images: 3662 x 48x48x3   device: mps
+Duplicate photos: 131 groups, 139 extra copies (each group is kept in one split)
+Train: 2572   Validation: 542   Test: 548
+  train No DR: 1265  DR: 1307
+  val   No DR: 269  DR: 273
+  test  No DR: 271  DR: 277
+
+Layer                       Output shape        Parameters
+----------------------------------------------------------
+input image                 (3, 48, 48)                  0
+conv layer 1                (32, 48, 48)               928
+conv layer 2                (64, 24, 24)            18,560
+conv layer 3                (128, 12, 12)           73,984
+conv layer 4                (256, 6, 6)            295,424
+conv layer 5                (512, 3, 3)          1,180,672
+global avg pool + dropout   (512,)                       0
+dense (output layer)        (2,)                     1,026
+----------------------------------------------------------
+Total trainable parameters                       1,570,594
+
+Optimizer: AdamW, one-cycle learning rate (peak 0.002), batch size 32, 40 epochs
+
+Epoch  train loss  train acc  val loss  val acc   time
+    1      0.4845     80.37%    0.2834   88.93%     8s  *
+    2      0.3089     90.36%    0.2906   89.30%     7s  *
+    3      0.3035     90.75%    0.2147   90.77%     7s  *
+    4      0.3016     91.60%    0.2176   93.17%     6s  *
+    5      0.2929     91.84%    0.2218   92.07%     7s
+    6      0.2795     92.46%    0.1869   92.44%     8s
+    7      0.2919     92.26%    0.5082   73.80%     8s
+    8      0.2654     93.55%    0.3922   85.79%     8s
+    9      0.2896     92.30%    0.2549   92.07%     6s
+   10      0.2595     93.47%    0.6827   61.81%     6s
+   11      0.2504     94.01%    0.4511   81.18%     6s
+   12      0.2497     94.05%    0.6662   73.62%     8s
+   13      0.2381     95.18%    0.4179   87.27%     7s
+   14      0.2376     94.71%    0.1641   93.54%     6s  *
+   15      0.2273     94.95%    0.4574   72.14%     6s
+   16      0.2234     95.76%    0.2782   90.04%     6s
+   17      0.2244     95.65%    0.4393   82.84%     6s
+   18      0.2230     95.76%    0.1315   94.83%     6s  *
+   19      0.2325     95.18%    0.1282   95.94%     6s  *
+   20      0.2179     96.15%    0.2604   91.33%     7s
+   21      0.2212     95.68%    0.1328   95.20%     7s
+   22      0.2159     96.00%    0.4462   78.97%     7s
+   23      0.2162     95.96%    0.2024   92.99%     6s
+   24      0.2031     96.31%    0.1334   96.86%     6s  *
+   25      0.2143     96.00%    0.2649   90.41%     6s
+   26      0.2076     96.42%    0.1179   96.31%     9s
+   27      0.1962     96.97%    0.1466   95.02%     8s
+   28      0.1992     96.81%    0.1407   94.46%     8s
+   29      0.1947     97.12%    0.1301   97.05%     8s  *
+   30      0.1924     97.01%    0.1238   95.39%     7s
+   31      0.1978     96.77%    0.1304   96.31%     7s
+   32      0.1842     97.51%    0.1069   96.49%     7s
+   33      0.1898     97.05%    0.1203   96.13%     7s
+   34      0.1825     97.67%    0.1041   96.68%     7s
+   35      0.1768     97.55%    0.1190   97.23%     8s  *
+   36      0.1797     97.59%    0.1074   96.13%     7s
+   37      0.1819     97.78%    0.1057   96.13%     9s
+   38      0.1749     98.02%    0.1021   96.68%     9s
+   39      0.1748     98.09%    0.1037   96.68%     7s
+   40      0.1758     97.74%    0.1047   96.13%     6s
+
+* = best so far. Kept the model from epoch 35 (validation accuracy 97.23%)
+
+==========================================================
+ TEST RESULTS  (548 images the CNN has never seen)
+==========================================================
+
+Test accuracy : 96.72%
+Sensitivity   : 98.56%  (eyes with DR that were found: 273/277)
+Specificity   : 94.83%  (healthy eyes called healthy: 257/271)
+Precision     : 95.12%  (DR alarms that were right: 273/287)
+ROC-AUC       : 0.9932
+
+Eyes with DR that were found, by the doctor's grade:
+  1 Mild          :  54/55  (98.2%)
+  2 Moderate      : 150/152 (98.7%)
+  3 Severe        :  28/28  (100.0%)
+  4 Proliferative :  41/42  (97.6%)
+
+Classification report:
+              precision    recall  f1-score   support
+
+       No DR      0.985     0.948     0.966       271
+          DR      0.951     0.986     0.968       277
+
+    accuracy                          0.967       548
+   macro avg      0.968     0.967     0.967       548
+weighted avg      0.968     0.967     0.967       548
+
+
+Confusion matrix (rows = actual, columns = predicted):
+         No DR     DR
+No DR      257     14
+DR           4    273
+
+Saved cnn_dr.pt and outputs/dr/ (training_log.txt, metrics.json, training_curves.png, confusion_matrix.png)

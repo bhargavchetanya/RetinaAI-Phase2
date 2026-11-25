@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* Chart tokens (dark theme – the app is dark-only).
+   Series colours: validated categorical palette (CVD-safe on #0f172a), one fixed colour per model. */
+:root {
+  color-scheme: dark;
+  --surface-1: #0f172a;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --grid: #1e293b;
+  --axis: #334155;
+  --series-1: #338ced; /* blue    – ResNet-18 */
+  --series-2: #e76624; /* orange  – EfficientNet-B0 */
+  --series-3: #00a888; /* aqua    – DenseNet-121 */
+  --series-4: #d28e05; /* yellow  – MobileNetV3-Large */
+  --series-5: #e24d8b; /* magenta – 5-layer CNN */
+  --good: #0ca30c;
+  --warning: #fab219;
+  --critical: #d03b3b;
+}
+
+html,
+body {
+  background: #020617;
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.card {
+  @apply rounded-2xl border border-slate-800 bg-slate-900/70 p-5;
+}
+.label {
+  @apply text-xs font-medium uppercase tracking-wide text-slate-400;
+}
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+code {
+  @apply rounded bg-slate-800 px-1.5 py-0.5 text-[0.85em] text-cyan-300;
+}

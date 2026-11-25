@@ -1,0 +1,72 @@
+======================================================================
+ TRAINING RESNET-18 (PRE-TRAINED ON IMAGENET)  -  No DR / Mild / Moderate / Severe / Proliferative
+======================================================================
+
+Images: 3662 x 48x48x3   device: mps
+Duplicate photos: 131 groups, 139 extra copies (each group is kept in one split)
+Train: 2572   Validation: 542   Test: 548
+  train No DR: 1265  Mild: 260  Moderate: 703  Severe: 136  Proliferative: 208
+  val   No DR: 269  Mild: 55  Moderate: 144  Severe: 29  Proliferative: 45
+  test  No DR: 271  Mild: 55  Moderate: 152  Severe: 28  Proliferative: 42
+
+Layer                                   Output shape        Parameters
+----------------------------------------------------------------------
+input image                             (3, 48, 48)                  0
+enlarge to 128x128                      (3, 128, 128)                0
+stem: conv 7x7 + BN + ReLU + max-pool   (64, 32, 32)             9,536
+layer 1: 2 residual blocks              (64, 32, 32)           147,968
+layer 2: 2 residual blocks              (128, 16, 16)          525,568
+layer 3: 2 residual blocks              (256, 8, 8)          2,099,712
+layer 4: 2 residual blocks              (512, 4, 4)          8,393,728
+global avg pool + dropout               (512,)                       0
+dense (output layer)                    (5,)                     2,565
+----------------------------------------------------------------------
+Total trainable parameters                                  11,179,077
+
+Optimizer: AdamW, one-cycle learning rate (peak 0.0005), batch size 32, 10 epochs, all layers fine-tuned
+
+Epoch  train loss  train acc  val loss  val acc   time
+    1      1.2765     52.88%    0.7799   71.96%    20s  *
+    2      0.9151     71.58%    0.7293   73.80%    17s  *
+    3      0.8336     73.68%    0.6427   75.65%    17s  *
+    4      0.7833     75.47%    0.6939   73.43%    17s
+    5      0.7301     77.92%    0.7184   77.31%    20s  *
+    6      0.7129     78.58%    0.6657   73.62%    36s
+    7      0.6867     80.48%    0.5609   78.60%    37s  *
+    8      0.6510     81.38%    0.5201   80.26%    29s  *
+    9      0.6106     83.90%    0.4999   82.66%    22s  *
+   10      0.5889     84.33%    0.5067   81.73%    19s
+
+* = best so far. Kept the model from epoch 9 (validation accuracy 82.66%)
+
+======================================================================
+ TEST RESULTS  (548 images ResNet-18 has never seen)
+======================================================================
+
+Test accuracy : 83.76%
+Quadratic weighted kappa (QWK) : 0.8781
+DR yes/no accuracy (grade 0 vs 1-4): 96.17%
+
+Classification report:
+               precision    recall  f1-score   support
+
+        No DR      0.956     0.967     0.961       271
+         Mild      0.732     0.545     0.625        55
+     Moderate      0.719     0.928     0.810       152
+       Severe      0.556     0.179     0.270        28
+Proliferative      0.750     0.500     0.600        42
+
+     accuracy                          0.838       548
+    macro avg      0.743     0.624     0.653       548
+ weighted avg      0.832     0.838     0.823       548
+
+
+Confusion matrix (rows = actual, columns = predicted):
+                         No DR           Mild       Moderate         Severe  Proliferative
+No DR                      262              6              3              0              0
+Mild                         6             30             19              0              0
+Moderate                     4              3            141              1              3
+Severe                       1              0             18              5              4
+Proliferative                1              2             15              3             21
+
+Saved resnet18_grade.pt and outputs/resnet18_grade/ (training_log.txt, metrics.json, training_curves.png, confusion_matrix.png)

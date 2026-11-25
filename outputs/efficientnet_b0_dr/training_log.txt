@@ -1,0 +1,80 @@
+======================================================================
+ TRAINING EFFICIENTNET-B0 (PRE-TRAINED ON IMAGENET)  -  No DR / DR
+======================================================================
+
+Images: 3662 x 48x48x3   device: mps
+Duplicate photos: 131 groups, 139 extra copies (each group is kept in one split)
+Train: 2572   Validation: 542   Test: 548
+  train No DR: 1265  DR: 1307
+  val   No DR: 269  DR: 273
+  test  No DR: 271  DR: 277
+
+Loading EfficientNet-B0 with ImageNet weights (first run downloads 21 MB) ...
+
+Layer                                   Output shape        Parameters
+----------------------------------------------------------------------
+input image                             (3, 48, 48)                  0
+enlarge to 128x128                      (3, 128, 128)                0
+features.0: Conv2dNormActivation        (32, 64, 64)               928
+features.1: Sequential                  (16, 64, 64)             1,448
+features.2: Sequential                  (24, 32, 32)            16,714
+features.3: Sequential                  (40, 16, 16)            46,640
+features.4: Sequential                  (80, 8, 8)             242,930
+features.5: Sequential                  (112, 8, 8)            543,148
+features.6: Sequential                  (192, 4, 4)          2,026,348
+features.7: Sequential                  (320, 4, 4)            717,232
+features.8: Conv2dNormActivation        (1280, 4, 4)           412,160
+global avg pool + dropout               (1280,)                      0
+dense (output layer)                    (2,)                     2,562
+----------------------------------------------------------------------
+Total trainable parameters                                   4,010,110
+
+Optimizer: AdamW, one-cycle learning rate (peak 0.001), batch size 32, 10 epochs, all layers fine-tuned
+
+Epoch  train loss  train acc  val loss  val acc   time
+    1      0.4397     82.27%    0.1653   94.28%    56s  *
+    2      0.2407     95.02%    0.1434   96.13%    36s  *
+    3      0.2356     94.98%    0.1334   96.31%    30s  *
+    4      0.2152     95.80%    0.1572   96.68%    30s  *
+    5      0.2059     96.35%    0.0914   97.23%    32s  *
+    6      0.1858     97.20%    0.0963   97.79%    30s  *
+    7      0.1764     97.51%    0.0978   96.68%    31s
+    8      0.1673     97.98%    0.0887   97.23%    30s
+    9      0.1533     98.37%    0.0808   97.05%    35s
+   10      0.1507     98.44%    0.0925   96.68%    29s
+
+* = best so far. Kept the model from epoch 6 (validation accuracy 97.79%)
+
+======================================================================
+ TEST RESULTS  (548 images EfficientNet-B0 has never seen)
+======================================================================
+
+Test accuracy : 96.17%
+Sensitivity   : 96.03%  (eyes with DR that were found: 266/277)
+Specificity   : 96.31%  (healthy eyes called healthy: 261/271)
+Precision     : 96.38%  (DR alarms that were right: 266/276)
+ROC-AUC       : 0.9936
+
+Eyes with DR that were found, by the doctor's grade:
+  1 Mild          :  51/55  (92.7%)
+  2 Moderate      : 148/152 (97.4%)
+  3 Severe        :  27/28  (96.4%)
+  4 Proliferative :  40/42  (95.2%)
+
+Classification report:
+              precision    recall  f1-score   support
+
+       No DR      0.960     0.963     0.961       271
+          DR      0.964     0.960     0.962       277
+
+    accuracy                          0.962       548
+   macro avg      0.962     0.962     0.962       548
+weighted avg      0.962     0.962     0.962       548
+
+
+Confusion matrix (rows = actual, columns = predicted):
+         No DR     DR
+No DR      261     10
+DR          11    266
+
+Saved efficientnet_b0_dr.pt and outputs/efficientnet_b0_dr/ (training_log.txt, metrics.json, training_curves.png, confusion_matrix.png)

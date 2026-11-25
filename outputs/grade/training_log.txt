@@ -1,0 +1,101 @@
+==========================================================
+ TRAINING THE 5-LAYER CNN  -  No DR / Mild / Moderate / Severe / Proliferative
+==========================================================
+
+Images: 3662 x 48x48x3   device: mps
+Duplicate photos: 131 groups, 139 extra copies (each group is kept in one split)
+Train: 2572   Validation: 542   Test: 548
+  train No DR: 1265  Mild: 260  Moderate: 703  Severe: 136  Proliferative: 208
+  val   No DR: 269  Mild: 55  Moderate: 144  Severe: 29  Proliferative: 45
+  test  No DR: 271  Mild: 55  Moderate: 152  Severe: 28  Proliferative: 42
+
+Layer                       Output shape        Parameters
+----------------------------------------------------------
+input image                 (3, 48, 48)                  0
+conv layer 1                (32, 48, 48)               928
+conv layer 2                (64, 24, 24)            18,560
+conv layer 3                (128, 12, 12)           73,984
+conv layer 4                (256, 6, 6)            295,424
+conv layer 5                (512, 3, 3)          1,180,672
+global avg pool + dropout   (512,)                       0
+dense (output layer)        (5,)                     2,565
+----------------------------------------------------------
+Total trainable parameters                       1,572,133
+
+Optimizer: AdamW, one-cycle learning rate (peak 0.002), batch size 32, 40 epochs
+
+Epoch  train loss  train acc  val loss  val acc   time
+    1      1.2212     57.70%    0.9206   66.24%     5s  *
+    2      0.9517     68.51%    1.3427   34.87%     4s
+    3      0.9419     69.32%    0.8423   70.48%     4s  *
+    4      0.9343     69.63%    0.8196   69.00%     4s
+    5      0.9091     70.10%    1.0492   59.41%     4s
+    6      0.8906     71.11%    0.7986   70.66%     4s  *
+    7      0.8846     71.03%    0.7699   69.19%     4s
+    8      0.8789     71.81%    1.2512   51.29%     4s
+    9      0.8807     71.54%    1.2184   60.15%     4s
+   10      0.8556     72.43%    1.2451   44.65%     4s
+   11      0.8435     72.67%    0.9477   68.63%     4s
+   12      0.8407     72.36%    1.3966   53.69%     4s
+   13      0.8280     73.79%    1.0994   64.21%     4s
+   14      0.8112     74.46%    1.6329   55.17%     4s
+   15      0.8104     73.87%    0.8257   73.25%     4s  *
+   16      0.7946     74.42%    1.1180   59.78%     4s
+   17      0.8091     74.57%    0.7404   73.80%     4s  *
+   18      0.7814     75.27%    0.6924   75.09%     4s  *
+   19      0.7786     75.82%    0.9061   70.30%     4s
+   20      0.7624     75.82%    0.7103   76.38%     4s  *
+   21      0.7666     76.21%    0.6202   78.60%     4s  *
+   22      0.7585     76.17%    0.8091   71.59%     4s
+   23      0.7497     77.06%    0.6144   78.97%     4s  *
+   24      0.7396     77.37%    0.6291   79.34%     4s  *
+   25      0.7402     77.06%    1.4958   44.46%     4s
+   26      0.7284     78.62%    0.6610   76.94%     4s
+   27      0.7188     78.50%    0.6866   75.46%     4s
+   28      0.7084     78.81%    0.6174   77.49%     4s
+   29      0.7005     79.70%    0.5568   80.44%     5s  *
+   30      0.6882     79.82%    0.5662   79.15%     5s
+   31      0.7018     79.39%    0.6598   76.20%     5s
+   32      0.6780     80.13%    0.5644   79.34%     5s
+   33      0.6761     80.13%    0.5611   80.26%     5s
+   34      0.6664     80.87%    0.5645   81.92%     5s  *
+   35      0.6417     81.80%    0.5460   81.37%     5s
+   36      0.6530     81.69%    0.5407   81.37%     5s
+   37      0.6452     82.08%    0.5323   81.55%     5s
+   38      0.6415     82.04%    0.5297   81.92%     5s  *
+   39      0.6327     82.81%    0.5315   81.92%     5s
+   40      0.6345     82.31%    0.5293   81.92%     5s  *
+
+* = best so far. Kept the model from epoch 40 (validation accuracy 81.92%)
+
+==========================================================
+ TEST RESULTS  (548 images the CNN has never seen)
+==========================================================
+
+Test accuracy : 82.30%
+Quadratic weighted kappa (QWK) : 0.8630
+DR yes/no accuracy (grade 0 vs 1-4): 96.35%
+
+Classification report:
+               precision    recall  f1-score   support
+
+        No DR      0.960     0.967     0.963       271
+         Mild      0.674     0.564     0.614        55
+     Moderate      0.695     0.855     0.767       152
+       Severe      0.714     0.179     0.286        28
+Proliferative      0.657     0.548     0.597        42
+
+     accuracy                          0.823       548
+    macro avg      0.740     0.622     0.645       548
+ weighted avg      0.822     0.823     0.811       548
+
+
+Confusion matrix (rows = actual, columns = predicted):
+                         No DR           Mild       Moderate         Severe  Proliferative
+No DR                      262              5              4              0              0
+Mild                         3             31             21              0              0
+Moderate                     6              8            130              1              7
+Severe                       0              1             17              5              5
+Proliferative                2              1             15              1             23
+
+Saved cnn_grade.pt and outputs/grade/ (training_log.txt, metrics.json, training_curves.png, confusion_matrix.png)

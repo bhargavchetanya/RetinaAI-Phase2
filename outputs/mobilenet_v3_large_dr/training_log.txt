@@ -1,0 +1,89 @@
+======================================================================
+ TRAINING MOBILENETV3-LARGE (PRE-TRAINED ON IMAGENET)  -  No DR / DR
+======================================================================
+
+Images: 3662 x 48x48x3   device: mps
+Duplicate photos: 131 groups, 139 extra copies (each group is kept in one split)
+Train: 2572   Validation: 542   Test: 548
+  train No DR: 1265  DR: 1307
+  val   No DR: 269  DR: 273
+  test  No DR: 271  DR: 277
+
+Loading MobileNetV3-Large with ImageNet weights (first run downloads 21 MB) ...
+Downloading: "https://download.pytorch.org/models/mobilenet_v3_large-8738ca79.pth" to /Users/chetanyabhargav/.cache/torch/hub/checkpoints/mobilenet_v3_large-8738ca79.pth
+
+Layer                                   Output shape        Parameters
+----------------------------------------------------------------------
+input image                             (3, 48, 48)                  0
+enlarge to 128x128                      (3, 128, 128)                0
+features.0: Conv2dNormActivation        (16, 64, 64)               464
+features.1: InvertedResidual            (16, 64, 64)               464
+features.2: InvertedResidual            (24, 32, 32)             3,440
+features.3: InvertedResidual            (24, 32, 32)             4,440
+features.4: InvertedResidual            (40, 16, 16)            10,328
+features.5: InvertedResidual            (40, 16, 16)            20,992
+features.6: InvertedResidual            (40, 16, 16)            20,992
+features.7: InvertedResidual            (80, 8, 8)              32,080
+features.8: InvertedResidual            (80, 8, 8)              34,760
+features.9: InvertedResidual            (80, 8, 8)              31,992
+features.10: InvertedResidual           (80, 8, 8)              31,992
+features.11: InvertedResidual           (112, 8, 8)            214,424
+features.12: InvertedResidual           (112, 8, 8)            386,120
+features.13: InvertedResidual           (160, 4, 4)            429,224
+features.14: InvertedResidual           (160, 4, 4)            797,360
+features.15: InvertedResidual           (160, 4, 4)            797,360
+features.16: Conv2dNormActivation       (960, 4, 4)            155,520
+global avg pool + dropout               (960,)                       0
+dense (output layer)                    (2,)                     1,922
+----------------------------------------------------------------------
+Total trainable parameters                                   2,973,874
+
+Optimizer: AdamW, one-cycle learning rate (peak 0.001), batch size 32, 10 epochs, all layers fine-tuned
+
+Epoch  train loss  train acc  val loss  val acc   time
+    1      0.4104     82.97%    0.3028   88.38%    23s  *
+    2      0.2272     95.68%    0.3367   83.39%    15s
+    3      0.2170     95.80%    0.1147   97.23%    15s  *
+    4      0.2104     95.76%    0.1475   95.57%    15s
+    5      0.1940     96.70%    0.0988   97.23%    15s  *
+    6      0.1855     97.08%    0.0861   97.42%    14s  *
+    7      0.1735     97.47%    0.0760   97.42%    15s  *
+    8      0.1630     98.09%    0.0862   97.05%    16s
+    9      0.1591     98.37%    0.0763   97.42%    14s
+   10      0.1535     98.64%    0.0749   97.60%    15s  *
+
+* = best so far. Kept the model from epoch 10 (validation accuracy 97.60%)
+
+======================================================================
+ TEST RESULTS  (548 images MobileNetV3-Large has never seen)
+======================================================================
+
+Test accuracy : 96.90%
+Sensitivity   : 97.11%  (eyes with DR that were found: 269/277)
+Specificity   : 96.68%  (healthy eyes called healthy: 262/271)
+Precision     : 96.76%  (DR alarms that were right: 269/278)
+ROC-AUC       : 0.9957
+
+Eyes with DR that were found, by the doctor's grade:
+  1 Mild          :  53/55  (96.4%)
+  2 Moderate      : 148/152 (97.4%)
+  3 Severe        :  27/28  (96.4%)
+  4 Proliferative :  41/42  (97.6%)
+
+Classification report:
+              precision    recall  f1-score   support
+
+       No DR      0.970     0.967     0.969       271
+          DR      0.968     0.971     0.969       277
+
+    accuracy                          0.969       548
+   macro avg      0.969     0.969     0.969       548
+weighted avg      0.969     0.969     0.969       548
+
+
+Confusion matrix (rows = actual, columns = predicted):
+         No DR     DR
+No DR      262      9
+DR           8    269
+
+Saved mobilenet_v3_large_dr.pt and outputs/mobilenet_v3_large_dr/ (training_log.txt, metrics.json, training_curves.png, confusion_matrix.png)

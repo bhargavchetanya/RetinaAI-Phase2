@@ -1,0 +1,18 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# data and trained PyTorch models (large; the website uses web_models/*.onnx instead)
+dataset/
+*.pt
+
+# website build
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/next-env.d.ts
+frontend/*.tsbuildinfo
+
+.DS_Store

@@ -1,0 +1,86 @@
+======================================================================
+ TRAINING MOBILENETV3-LARGE (PRE-TRAINED ON IMAGENET)  -  No DR / Mild / Moderate / Severe / Proliferative
+======================================================================
+
+Images: 3662 x 48x48x3   device: mps
+Duplicate photos: 131 groups, 139 extra copies (each group is kept in one split)
+Train: 2572   Validation: 542   Test: 548
+  train No DR: 1265  Mild: 260  Moderate: 703  Severe: 136  Proliferative: 208
+  val   No DR: 269  Mild: 55  Moderate: 144  Severe: 29  Proliferative: 45
+  test  No DR: 271  Mild: 55  Moderate: 152  Severe: 28  Proliferative: 42
+
+Loading MobileNetV3-Large with ImageNet weights (first run downloads 21 MB) ...
+
+Layer                                   Output shape        Parameters
+----------------------------------------------------------------------
+input image                             (3, 48, 48)                  0
+enlarge to 128x128                      (3, 128, 128)                0
+features.0: Conv2dNormActivation        (16, 64, 64)               464
+features.1: InvertedResidual            (16, 64, 64)               464
+features.2: InvertedResidual            (24, 32, 32)             3,440
+features.3: InvertedResidual            (24, 32, 32)             4,440
+features.4: InvertedResidual            (40, 16, 16)            10,328
+features.5: InvertedResidual            (40, 16, 16)            20,992
+features.6: InvertedResidual            (40, 16, 16)            20,992
+features.7: InvertedResidual            (80, 8, 8)              32,080
+features.8: InvertedResidual            (80, 8, 8)              34,760
+features.9: InvertedResidual            (80, 8, 8)              31,992
+features.10: InvertedResidual           (80, 8, 8)              31,992
+features.11: InvertedResidual           (112, 8, 8)            214,424
+features.12: InvertedResidual           (112, 8, 8)            386,120
+features.13: InvertedResidual           (160, 4, 4)            429,224
+features.14: InvertedResidual           (160, 4, 4)            797,360
+features.15: InvertedResidual           (160, 4, 4)            797,360
+features.16: Conv2dNormActivation       (960, 4, 4)            155,520
+global avg pool + dropout               (960,)                       0
+dense (output layer)                    (5,)                     4,805
+----------------------------------------------------------------------
+Total trainable parameters                                   2,976,757
+
+Optimizer: AdamW, one-cycle learning rate (peak 0.001), batch size 32, 10 epochs, all layers fine-tuned
+
+Epoch  train loss  train acc  val loss  val acc   time
+    1      1.1592     58.24%    0.9582   61.44%    16s  *
+    2      0.8261     73.44%    0.7471   73.62%    15s  *
+    3      0.7797     74.96%    0.8248   71.22%    14s
+    4      0.7408     77.06%    0.6257   76.94%    15s  *
+    5      0.6938     79.63%    0.7758   71.59%    15s
+    6      0.6671     80.44%    0.6512   76.20%    15s
+    7      0.6271     81.96%    0.5720   78.23%    15s  *
+    8      0.5694     84.68%    0.5392   80.07%    14s  *
+    9      0.5374     85.65%    0.5325   80.63%    14s  *
+   10      0.5236     87.17%    0.5297   81.92%    15s  *
+
+* = best so far. Kept the model from epoch 10 (validation accuracy 81.92%)
+
+======================================================================
+ TEST RESULTS  (548 images MobileNetV3-Large has never seen)
+======================================================================
+
+Test accuracy : 81.93%
+Quadratic weighted kappa (QWK) : 0.8683
+DR yes/no accuracy (grade 0 vs 1-4): 96.35%
+
+Classification report:
+               precision    recall  f1-score   support
+
+        No DR      0.953     0.974     0.964       271
+         Mild      0.611     0.600     0.606        55
+     Moderate      0.756     0.796     0.776       152
+       Severe      0.500     0.250     0.333        28
+Proliferative      0.558     0.571     0.565        42
+
+     accuracy                          0.819       548
+    macro avg      0.676     0.638     0.649       548
+ weighted avg      0.811     0.819     0.813       548
+
+
+Confusion matrix (rows = actual, columns = predicted):
+                         No DR           Mild       Moderate         Severe  Proliferative
+No DR                      264              6              1              0              0
+Mild                         7             33             14              0              1
+Moderate                     4             12            121              4             11
+Severe                       1              0             13              7              7
+Proliferative                1              3             11              3             24
+
+Saved mobilenet_v3_large_grade.pt and outputs/mobilenet_v3_large_grade/ (training_log.txt, metrics.json, training_curves.png, confusion_matrix.png)

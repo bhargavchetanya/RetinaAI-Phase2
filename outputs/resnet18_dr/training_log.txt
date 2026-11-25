@@ -1,0 +1,75 @@
+======================================================================
+ TRAINING RESNET-18 (PRE-TRAINED ON IMAGENET)  -  No DR / DR
+======================================================================
+
+Images: 3662 x 48x48x3   device: mps
+Duplicate photos: 131 groups, 139 extra copies (each group is kept in one split)
+Train: 2572   Validation: 542   Test: 548
+  train No DR: 1265  DR: 1307
+  val   No DR: 269  DR: 273
+  test  No DR: 271  DR: 277
+Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /Users/chetanyabhargav/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth
+
+Layer                                   Output shape        Parameters
+----------------------------------------------------------------------
+input image                             (3, 48, 48)                  0
+enlarge to 128x128                      (3, 128, 128)                0
+stem: conv 7x7 + BN + ReLU + max-pool   (64, 32, 32)             9,536
+layer 1: 2 residual blocks              (64, 32, 32)           147,968
+layer 2: 2 residual blocks              (128, 16, 16)          525,568
+layer 3: 2 residual blocks              (256, 8, 8)          2,099,712
+layer 4: 2 residual blocks              (512, 4, 4)          8,393,728
+global avg pool + dropout               (512,)                       0
+dense (output layer)                    (2,)                     1,026
+----------------------------------------------------------------------
+Total trainable parameters                                  11,177,538
+
+Optimizer: AdamW, one-cycle learning rate (peak 0.0005), batch size 32, 10 epochs, all layers fine-tuned
+
+Epoch  train loss  train acc  val loss  val acc   time
+    1      0.4129     83.83%    0.2055   94.46%    12s  *
+    2      0.2787     92.69%    0.1308   97.05%    11s  *
+    3      0.2535     94.36%    0.1770   93.54%    11s
+    4      0.2344     95.18%    0.1256   96.31%    11s
+    5      0.2061     96.31%    0.2158   91.88%    11s
+    6      0.1990     96.73%    0.0909   97.23%    11s  *
+    7      0.1843     97.55%    0.1004   96.86%    11s
+    8      0.1782     97.78%    0.0925   97.23%    11s
+    9      0.1711     97.82%    0.0847   97.60%    11s  *
+   10      0.1591     98.37%    0.0909   97.23%    11s
+
+* = best so far. Kept the model from epoch 9 (validation accuracy 97.60%)
+
+======================================================================
+ TEST RESULTS  (548 images ResNet-18 has never seen)
+======================================================================
+
+Test accuracy : 96.53%
+Sensitivity   : 96.39%  (eyes with DR that were found: 267/277)
+Specificity   : 96.68%  (healthy eyes called healthy: 262/271)
+Precision     : 96.74%  (DR alarms that were right: 267/276)
+ROC-AUC       : 0.9942
+
+Eyes with DR that were found, by the doctor's grade:
+  1 Mild          :  51/55  (92.7%)
+  2 Moderate      : 149/152 (98.0%)
+  3 Severe        :  27/28  (96.4%)
+  4 Proliferative :  40/42  (95.2%)
+
+Classification report:
+              precision    recall  f1-score   support
+
+       No DR      0.963     0.967     0.965       271
+          DR      0.967     0.964     0.966       277
+
+    accuracy                          0.965       548
+   macro avg      0.965     0.965     0.965       548
+weighted avg      0.965     0.965     0.965       548
+
+
+Confusion matrix (rows = actual, columns = predicted):
+         No DR     DR
+No DR      262      9
+DR          10    267
+
+Saved resnet18_dr.pt and outputs/resnet18_dr/ (training_log.txt, metrics.json, training_curves.png, confusion_matrix.png)

@@ -1,0 +1,32 @@
+{
+  "task": "dr",
+  "classes": [
+    "No DR",
+    "DR"
+  ],
+  "model": "MobileNetV3-Large pre-trained on ImageNet",
+  "arch": "mobilenet_v3_large",
+  "parameters": 2973874,
+  "image_size": 48,
+  "train_images": 2572,
+  "val_images": 542,
+  "test_images": 548,
+  "epochs": 10,
+  "best_epoch": 10,
+  "val_accuracy": 0.976,
+  "test_accuracy": 0.969,
+  "sensitivity": 0.9711,
+  "specificity": 0.9668,
+  "precision": 0.9676,
+  "roc_auc": 0.9957,
+  "confusion_matrix": [
+    [
+      262,
+      9
+    ],
+    [
+      8,
+      269
+    ]
+  ]
+}

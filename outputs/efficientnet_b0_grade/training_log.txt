@@ -1,0 +1,78 @@
+======================================================================
+ TRAINING EFFICIENTNET-B0 (PRE-TRAINED ON IMAGENET)  -  No DR / Mild / Moderate / Severe / Proliferative
+======================================================================
+
+Images: 3662 x 48x48x3   device: mps
+Duplicate photos: 131 groups, 139 extra copies (each group is kept in one split)
+Train: 2572   Validation: 542   Test: 548
+  train No DR: 1265  Mild: 260  Moderate: 703  Severe: 136  Proliferative: 208
+  val   No DR: 269  Mild: 55  Moderate: 144  Severe: 29  Proliferative: 45
+  test  No DR: 271  Mild: 55  Moderate: 152  Severe: 28  Proliferative: 42
+
+Loading EfficientNet-B0 with ImageNet weights (first run downloads 21 MB) ...
+
+Layer                                   Output shape        Parameters
+----------------------------------------------------------------------
+input image                             (3, 48, 48)                  0
+enlarge to 128x128                      (3, 128, 128)                0
+features.0: Conv2dNormActivation        (32, 64, 64)               928
+features.1: Sequential                  (16, 64, 64)             1,448
+features.2: Sequential                  (24, 32, 32)            16,714
+features.3: Sequential                  (40, 16, 16)            46,640
+features.4: Sequential                  (80, 8, 8)             242,930
+features.5: Sequential                  (112, 8, 8)            543,148
+features.6: Sequential                  (192, 4, 4)          2,026,348
+features.7: Sequential                  (320, 4, 4)            717,232
+features.8: Conv2dNormActivation        (1280, 4, 4)           412,160
+global avg pool + dropout               (1280,)                      0
+dense (output layer)                    (5,)                     6,405
+----------------------------------------------------------------------
+Total trainable parameters                                   4,013,953
+
+Optimizer: AdamW, one-cycle learning rate (peak 0.001), batch size 32, 10 epochs, all layers fine-tuned
+
+Epoch  train loss  train acc  val loss  val acc   time
+    1      1.2320     54.86%    0.8049   71.40%    31s  *
+    2      0.8570     72.98%    0.7093   73.25%    29s  *
+    3      0.8051     73.87%    0.6943   72.69%    28s
+    4      0.7707     76.36%    0.6242   79.15%    33s  *
+    5      0.7180     78.50%    0.5845   77.49%    31s
+    6      0.6772     80.48%    0.5443   78.78%    27s
+    7      0.6343     82.04%    0.5518   79.52%    28s  *
+    8      0.5889     84.06%    0.5280   80.81%    28s  *
+    9      0.5516     85.93%    0.5163   82.66%    28s  *
+   10      0.5322     86.43%    0.5184   81.73%    29s
+
+* = best so far. Kept the model from epoch 9 (validation accuracy 82.66%)
+
+======================================================================
+ TEST RESULTS  (548 images EfficientNet-B0 has never seen)
+======================================================================
+
+Test accuracy : 82.48%
+Quadratic weighted kappa (QWK) : 0.8592
+DR yes/no accuracy (grade 0 vs 1-4): 95.99%
+
+Classification report:
+               precision    recall  f1-score   support
+
+        No DR      0.959     0.959     0.959       271
+         Mild      0.660     0.636     0.648        55
+     Moderate      0.743     0.836     0.786       152
+       Severe      0.556     0.357     0.435        28
+Proliferative      0.571     0.476     0.519        42
+
+     accuracy                          0.825       548
+    macro avg      0.698     0.653     0.670       548
+ weighted avg      0.819     0.825     0.820       548
+
+
+Confusion matrix (rows = actual, columns = predicted):
+                         No DR           Mild       Moderate         Severe  Proliferative
+No DR                      260              7              4              0              0
+Mild                         5             35             15              0              0
+Moderate                     4              7            127              5              9
+Severe                       1              0             11             10              6
+Proliferative                1              4             14              3             20
+
+Saved efficientnet_b0_grade.pt and outputs/efficientnet_b0_grade/ (training_log.txt, metrics.json, training_curves.png, confusion_matrix.png)

@@ -1,0 +1,11 @@
+.git
+venv
+.venv
+dataset
+outputs
+__pycache__
+*.pt
+web
+frontend/node_modules
+frontend/.next
+frontend/out

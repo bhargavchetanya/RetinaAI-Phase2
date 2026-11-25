@@ -1,0 +1,2931 @@
+{
+ "img_size": 48,
+ "models": [
+  {
+   "id": "cnn_dr",
+   "key": "cnn",
+   "name": "5-layer CNN",
+   "pretrained": false,
+   "task": "dr",
+   "classes": [
+    "No DR",
+    "DR"
+   ],
+   "file": "cnn_dr.onnx",
+   "mean": [
+    0.5013841986656189,
+    0.49944713711738586,
+    0.504932701587677
+   ],
+   "std": [
+    0.06261157244443893,
+    0.13451503217220306,
+    0.17583321034908295
+   ],
+   "img_size": 48,
+   "parameters": 1570594,
+   "onnx_mb": 3.1,
+   "metrics": {
+    "task": "dr",
+    "classes": [
+     "No DR",
+     "DR"
+    ],
+    "model": "5-layer CNN",
+    "parameters": 1570594,
+    "image_size": 48,
+    "train_images": 2572,
+    "val_images": 542,
+    "test_images": 548,
+    "epochs": 40,
+    "best_epoch": 35,
+    "val_accuracy": 0.9723,
+    "test_accuracy": 0.9672,
+    "sensitivity": 0.9856,
+    "specificity": 0.9483,
+    "precision": 0.9512,
+    "roc_auc": 0.9932,
+    "confusion_matrix": [
+     [
+      257,
+      14
+     ],
+     [
+      4,
+      273
+     ]
+    ]
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 0.4845,
+     "train_acc": 0.8037,
+     "val_loss": 0.2834,
+     "val_acc": 0.8893,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.3089,
+     "train_acc": 0.9036,
+     "val_loss": 0.2906,
+     "val_acc": 0.893,
+     "best": true
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.3035,
+     "train_acc": 0.9075,
+     "val_loss": 0.2147,
+     "val_acc": 0.9077,
+     "best": true
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.3016,
+     "train_acc": 0.916,
+     "val_loss": 0.2176,
+     "val_acc": 0.9317,
+     "best": true
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.2929,
+     "train_acc": 0.9184,
+     "val_loss": 0.2218,
+     "val_acc": 0.9207,
+     "best": false
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.2795,
+     "train_acc": 0.9246,
+     "val_loss": 0.1869,
+     "val_acc": 0.9244,
+     "best": false
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.2919,
+     "train_acc": 0.9226,
+     "val_loss": 0.5082,
+     "val_acc": 0.738,
+     "best": false
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.2654,
+     "train_acc": 0.9355,
+     "val_loss": 0.3922,
+     "val_acc": 0.8579,
+     "best": false
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.2896,
+     "train_acc": 0.923,
+     "val_loss": 0.2549,
+     "val_acc": 0.9207,
+     "best": false
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.2595,
+     "train_acc": 0.9347,
+     "val_loss": 0.6827,
+     "val_acc": 0.6181,
+     "best": false
+    },
+    {
+     "epoch": 11,
+     "train_loss": 0.2504,
+     "train_acc": 0.9401,
+     "val_loss": 0.4511,
+     "val_acc": 0.8118,
+     "best": false
+    },
+    {
+     "epoch": 12,
+     "train_loss": 0.2497,
+     "train_acc": 0.9405,
+     "val_loss": 0.6662,
+     "val_acc": 0.7362,
+     "best": false
+    },
+    {
+     "epoch": 13,
+     "train_loss": 0.2381,
+     "train_acc": 0.9518,
+     "val_loss": 0.4179,
+     "val_acc": 0.8727,
+     "best": false
+    },
+    {
+     "epoch": 14,
+     "train_loss": 0.2376,
+     "train_acc": 0.9471,
+     "val_loss": 0.1641,
+     "val_acc": 0.9354,
+     "best": true
+    },
+    {
+     "epoch": 15,
+     "train_loss": 0.2273,
+     "train_acc": 0.9495,
+     "val_loss": 0.4574,
+     "val_acc": 0.7214,
+     "best": false
+    },
+    {
+     "epoch": 16,
+     "train_loss": 0.2234,
+     "train_acc": 0.9576,
+     "val_loss": 0.2782,
+     "val_acc": 0.9004,
+     "best": false
+    },
+    {
+     "epoch": 17,
+     "train_loss": 0.2244,
+     "train_acc": 0.9565,
+     "val_loss": 0.4393,
+     "val_acc": 0.8284,
+     "best": false
+    },
+    {
+     "epoch": 18,
+     "train_loss": 0.223,
+     "train_acc": 0.9576,
+     "val_loss": 0.1315,
+     "val_acc": 0.9483,
+     "best": true
+    },
+    {
+     "epoch": 19,
+     "train_loss": 0.2325,
+     "train_acc": 0.9518,
+     "val_loss": 0.1282,
+     "val_acc": 0.9594,
+     "best": true
+    },
+    {
+     "epoch": 20,
+     "train_loss": 0.2179,
+     "train_acc": 0.9615,
+     "val_loss": 0.2604,
+     "val_acc": 0.9133,
+     "best": false
+    },
+    {
+     "epoch": 21,
+     "train_loss": 0.2212,
+     "train_acc": 0.9568,
+     "val_loss": 0.1328,
+     "val_acc": 0.952,
+     "best": false
+    },
+    {
+     "epoch": 22,
+     "train_loss": 0.2159,
+     "train_acc": 0.96,
+     "val_loss": 0.4462,
+     "val_acc": 0.7897,
+     "best": false
+    },
+    {
+     "epoch": 23,
+     "train_loss": 0.2162,
+     "train_acc": 0.9596,
+     "val_loss": 0.2024,
+     "val_acc": 0.9299,
+     "best": false
+    },
+    {
+     "epoch": 24,
+     "train_loss": 0.2031,
+     "train_acc": 0.9631,
+     "val_loss": 0.1334,
+     "val_acc": 0.9686,
+     "best": true
+    },
+    {
+     "epoch": 25,
+     "train_loss": 0.2143,
+     "train_acc": 0.96,
+     "val_loss": 0.2649,
+     "val_acc": 0.9041,
+     "best": false
+    },
+    {
+     "epoch": 26,
+     "train_loss": 0.2076,
+     "train_acc": 0.9642,
+     "val_loss": 0.1179,
+     "val_acc": 0.9631,
+     "best": false
+    },
+    {
+     "epoch": 27,
+     "train_loss": 0.1962,
+     "train_acc": 0.9697,
+     "val_loss": 0.1466,
+     "val_acc": 0.9502,
+     "best": false
+    },
+    {
+     "epoch": 28,
+     "train_loss": 0.1992,
+     "train_acc": 0.9681,
+     "val_loss": 0.1407,
+     "val_acc": 0.9446,
+     "best": false
+    },
+    {
+     "epoch": 29,
+     "train_loss": 0.1947,
+     "train_acc": 0.9712,
+     "val_loss": 0.1301,
+     "val_acc": 0.9705,
+     "best": true
+    },
+    {
+     "epoch": 30,
+     "train_loss": 0.1924,
+     "train_acc": 0.9701,
+     "val_loss": 0.1238,
+     "val_acc": 0.9539,
+     "best": false
+    },
+    {
+     "epoch": 31,
+     "train_loss": 0.1978,
+     "train_acc": 0.9677,
+     "val_loss": 0.1304,
+     "val_acc": 0.9631,
+     "best": false
+    },
+    {
+     "epoch": 32,
+     "train_loss": 0.1842,
+     "train_acc": 0.9751,
+     "val_loss": 0.1069,
+     "val_acc": 0.9649,
+     "best": false
+    },
+    {
+     "epoch": 33,
+     "train_loss": 0.1898,
+     "train_acc": 0.9705,
+     "val_loss": 0.1203,
+     "val_acc": 0.9613,
+     "best": false
+    },
+    {
+     "epoch": 34,
+     "train_loss": 0.1825,
+     "train_acc": 0.9767,
+     "val_loss": 0.1041,
+     "val_acc": 0.9668,
+     "best": false
+    },
+    {
+     "epoch": 35,
+     "train_loss": 0.1768,
+     "train_acc": 0.9755,
+     "val_loss": 0.119,
+     "val_acc": 0.9723,
+     "best": true
+    },
+    {
+     "epoch": 36,
+     "train_loss": 0.1797,
+     "train_acc": 0.9759,
+     "val_loss": 0.1074,
+     "val_acc": 0.9613,
+     "best": false
+    },
+    {
+     "epoch": 37,
+     "train_loss": 0.1819,
+     "train_acc": 0.9778,
+     "val_loss": 0.1057,
+     "val_acc": 0.9613,
+     "best": false
+    },
+    {
+     "epoch": 38,
+     "train_loss": 0.1749,
+     "train_acc": 0.9802,
+     "val_loss": 0.1021,
+     "val_acc": 0.9668,
+     "best": false
+    },
+    {
+     "epoch": 39,
+     "train_loss": 0.1748,
+     "train_acc": 0.9809,
+     "val_loss": 0.1037,
+     "val_acc": 0.9668,
+     "best": false
+    },
+    {
+     "epoch": 40,
+     "train_loss": 0.1758,
+     "train_acc": 0.9774,
+     "val_loss": 0.1047,
+     "val_acc": 0.9613,
+     "best": false
+    }
+   ],
+   "layers": [
+    {
+     "name": "input image",
+     "shape": "(3, 48, 48)",
+     "params": 0
+    },
+    {
+     "name": "conv layer 1",
+     "shape": "(32, 48, 48)",
+     "params": 928
+    },
+    {
+     "name": "conv layer 2",
+     "shape": "(64, 24, 24)",
+     "params": 18560
+    },
+    {
+     "name": "conv layer 3",
+     "shape": "(128, 12, 12)",
+     "params": 73984
+    },
+    {
+     "name": "conv layer 4",
+     "shape": "(256, 6, 6)",
+     "params": 295424
+    },
+    {
+     "name": "conv layer 5",
+     "shape": "(512, 3, 3)",
+     "params": 1180672
+    },
+    {
+     "name": "global avg pool + dropout",
+     "shape": "(512,)",
+     "params": 0
+    },
+    {
+     "name": "dense (output layer)",
+     "shape": "(2,)",
+     "params": 1026
+    }
+   ],
+   "split": {
+    "train": {
+     "No DR": 1265,
+     "DR": 1307
+    },
+    "val": {
+     "No DR": 269,
+     "DR": 273
+    },
+    "test": {
+     "No DR": 271,
+     "DR": 277
+    }
+   },
+   "optimizer": "AdamW, one-cycle learning rate (peak 0.002), batch size 32, 40 epochs",
+   "duplicates": "131 groups, 139 extra copies (each group is kept in one split)",
+   "seconds": 281
+  },
+  {
+   "id": "resnet18_dr",
+   "key": "resnet18",
+   "name": "ResNet-18",
+   "pretrained": true,
+   "task": "dr",
+   "classes": [
+    "No DR",
+    "DR"
+   ],
+   "file": "resnet18_dr.onnx",
+   "mean": [
+    0.5013841986656189,
+    0.49944713711738586,
+    0.504932701587677
+   ],
+   "std": [
+    0.06261157244443893,
+    0.13451503217220306,
+    0.17583321034908295
+   ],
+   "img_size": 48,
+   "parameters": 11177538,
+   "onnx_mb": 22.4,
+   "metrics": {
+    "task": "dr",
+    "classes": [
+     "No DR",
+     "DR"
+    ],
+    "model": "ResNet-18 pre-trained on ImageNet",
+    "parameters": 11177538,
+    "image_size": 48,
+    "train_images": 2572,
+    "val_images": 542,
+    "test_images": 548,
+    "epochs": 10,
+    "best_epoch": 9,
+    "val_accuracy": 0.976,
+    "test_accuracy": 0.9653,
+    "sensitivity": 0.9639,
+    "specificity": 0.9668,
+    "precision": 0.9674,
+    "roc_auc": 0.9942,
+    "confusion_matrix": [
+     [
+      262,
+      9
+     ],
+     [
+      10,
+      267
+     ]
+    ]
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 0.4129,
+     "train_acc": 0.8383,
+     "val_loss": 0.2055,
+     "val_acc": 0.9446,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.2787,
+     "train_acc": 0.9269,
+     "val_loss": 0.1308,
+     "val_acc": 0.9705,
+     "best": true
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.2535,
+     "train_acc": 0.9436,
+     "val_loss": 0.177,
+     "val_acc": 0.9354,
+     "best": false
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.2344,
+     "train_acc": 0.9518,
+     "val_loss": 0.1256,
+     "val_acc": 0.9631,
+     "best": false
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.2061,
+     "train_acc": 0.9631,
+     "val_loss": 0.2158,
+     "val_acc": 0.9188,
+     "best": false
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.199,
+     "train_acc": 0.9673,
+     "val_loss": 0.0909,
+     "val_acc": 0.9723,
+     "best": true
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.1843,
+     "train_acc": 0.9755,
+     "val_loss": 0.1004,
+     "val_acc": 0.9686,
+     "best": false
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.1782,
+     "train_acc": 0.9778,
+     "val_loss": 0.0925,
+     "val_acc": 0.9723,
+     "best": false
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.1711,
+     "train_acc": 0.9782,
+     "val_loss": 0.0847,
+     "val_acc": 0.976,
+     "best": true
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.1591,
+     "train_acc": 0.9837,
+     "val_loss": 0.0909,
+     "val_acc": 0.9723,
+     "best": false
+    }
+   ],
+   "layers": [
+    {
+     "name": "input image",
+     "shape": "(3, 48, 48)",
+     "params": 0
+    },
+    {
+     "name": "enlarge to 128x128",
+     "shape": "(3, 128, 128)",
+     "params": 0
+    },
+    {
+     "name": "stem: conv 7x7 + BN + ReLU + max-pool",
+     "shape": "(64, 32, 32)",
+     "params": 9536
+    },
+    {
+     "name": "layer 1: 2 residual blocks",
+     "shape": "(64, 32, 32)",
+     "params": 147968
+    },
+    {
+     "name": "layer 2: 2 residual blocks",
+     "shape": "(128, 16, 16)",
+     "params": 525568
+    },
+    {
+     "name": "layer 3: 2 residual blocks",
+     "shape": "(256, 8, 8)",
+     "params": 2099712
+    },
+    {
+     "name": "layer 4: 2 residual blocks",
+     "shape": "(512, 4, 4)",
+     "params": 8393728
+    },
+    {
+     "name": "global avg pool + dropout",
+     "shape": "(512,)",
+     "params": 0
+    },
+    {
+     "name": "dense (output layer)",
+     "shape": "(2,)",
+     "params": 1026
+    }
+   ],
+   "split": {
+    "train": {
+     "No DR": 1265,
+     "DR": 1307
+    },
+    "val": {
+     "No DR": 269,
+     "DR": 273
+    },
+    "test": {
+     "No DR": 271,
+     "DR": 277
+    }
+   },
+   "optimizer": "AdamW, one-cycle learning rate (peak 0.0005), batch size 32, 10 epochs, all layers fine-tuned",
+   "duplicates": "131 groups, 139 extra copies (each group is kept in one split)",
+   "seconds": 111
+  },
+  {
+   "id": "efficientnet_b0_dr",
+   "key": "efficientnet_b0",
+   "name": "EfficientNet-B0",
+   "pretrained": true,
+   "task": "dr",
+   "classes": [
+    "No DR",
+    "DR"
+   ],
+   "file": "efficientnet_b0_dr.onnx",
+   "mean": [
+    0.5013841986656189,
+    0.49944713711738586,
+    0.504932701587677
+   ],
+   "std": [
+    0.06261157244443893,
+    0.13451503217220306,
+    0.17583321034908295
+   ],
+   "img_size": 48,
+   "parameters": 4010110,
+   "onnx_mb": 8.1,
+   "metrics": {
+    "task": "dr",
+    "classes": [
+     "No DR",
+     "DR"
+    ],
+    "model": "EfficientNet-B0 pre-trained on ImageNet",
+    "arch": "efficientnet_b0",
+    "parameters": 4010110,
+    "image_size": 48,
+    "train_images": 2572,
+    "val_images": 542,
+    "test_images": 548,
+    "epochs": 10,
+    "best_epoch": 6,
+    "val_accuracy": 0.9779,
+    "test_accuracy": 0.9617,
+    "sensitivity": 0.9603,
+    "specificity": 0.9631,
+    "precision": 0.9638,
+    "roc_auc": 0.9936,
+    "confusion_matrix": [
+     [
+      261,
+      10
+     ],
+     [
+      11,
+      266
+     ]
+    ]
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 0.4397,
+     "train_acc": 0.8227,
+     "val_loss": 0.1653,
+     "val_acc": 0.9428,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.2407,
+     "train_acc": 0.9502,
+     "val_loss": 0.1434,
+     "val_acc": 0.9613,
+     "best": true
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.2356,
+     "train_acc": 0.9498,
+     "val_loss": 0.1334,
+     "val_acc": 0.9631,
+     "best": true
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.2152,
+     "train_acc": 0.958,
+     "val_loss": 0.1572,
+     "val_acc": 0.9668,
+     "best": true
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.2059,
+     "train_acc": 0.9635,
+     "val_loss": 0.0914,
+     "val_acc": 0.9723,
+     "best": true
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.1858,
+     "train_acc": 0.972,
+     "val_loss": 0.0963,
+     "val_acc": 0.9779,
+     "best": true
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.1764,
+     "train_acc": 0.9751,
+     "val_loss": 0.0978,
+     "val_acc": 0.9668,
+     "best": false
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.1673,
+     "train_acc": 0.9798,
+     "val_loss": 0.0887,
+     "val_acc": 0.9723,
+     "best": false
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.1533,
+     "train_acc": 0.9837,
+     "val_loss": 0.0808,
+     "val_acc": 0.9705,
+     "best": false
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.1507,
+     "train_acc": 0.9844,
+     "val_loss": 0.0925,
+     "val_acc": 0.9668,
+     "best": false
+    }
+   ],
+   "layers": [
+    {
+     "name": "input image",
+     "shape": "(3, 48, 48)",
+     "params": 0
+    },
+    {
+     "name": "enlarge to 128x128",
+     "shape": "(3, 128, 128)",
+     "params": 0
+    },
+    {
+     "name": "features.0: Conv2dNormActivation",
+     "shape": "(32, 64, 64)",
+     "params": 928
+    },
+    {
+     "name": "features.1: Sequential",
+     "shape": "(16, 64, 64)",
+     "params": 1448
+    },
+    {
+     "name": "features.2: Sequential",
+     "shape": "(24, 32, 32)",
+     "params": 16714
+    },
+    {
+     "name": "features.3: Sequential",
+     "shape": "(40, 16, 16)",
+     "params": 46640
+    },
+    {
+     "name": "features.4: Sequential",
+     "shape": "(80, 8, 8)",
+     "params": 242930
+    },
+    {
+     "name": "features.5: Sequential",
+     "shape": "(112, 8, 8)",
+     "params": 543148
+    },
+    {
+     "name": "features.6: Sequential",
+     "shape": "(192, 4, 4)",
+     "params": 2026348
+    },
+    {
+     "name": "features.7: Sequential",
+     "shape": "(320, 4, 4)",
+     "params": 717232
+    },
+    {
+     "name": "features.8: Conv2dNormActivation",
+     "shape": "(1280, 4, 4)",
+     "params": 412160
+    },
+    {
+     "name": "global avg pool + dropout",
+     "shape": "(1280,)",
+     "params": 0
+    },
+    {
+     "name": "dense (output layer)",
+     "shape": "(2,)",
+     "params": 2562
+    }
+   ],
+   "split": {
+    "train": {
+     "No DR": 1265,
+     "DR": 1307
+    },
+    "val": {
+     "No DR": 269,
+     "DR": 273
+    },
+    "test": {
+     "No DR": 271,
+     "DR": 277
+    }
+   },
+   "optimizer": "AdamW, one-cycle learning rate (peak 0.001), batch size 32, 10 epochs, all layers fine-tuned",
+   "duplicates": "131 groups, 139 extra copies (each group is kept in one split)",
+   "seconds": 339
+  },
+  {
+   "id": "densenet121_dr",
+   "key": "densenet121",
+   "name": "DenseNet-121",
+   "pretrained": true,
+   "task": "dr",
+   "classes": [
+    "No DR",
+    "DR"
+   ],
+   "file": "densenet121_dr.onnx",
+   "mean": [
+    0.5013841986656189,
+    0.49944713711738586,
+    0.504932701587677
+   ],
+   "std": [
+    0.06261157244443893,
+    0.13451503217220306,
+    0.17583321034908295
+   ],
+   "img_size": 48,
+   "parameters": 6955906,
+   "onnx_mb": 14.2,
+   "metrics": {
+    "task": "dr",
+    "classes": [
+     "No DR",
+     "DR"
+    ],
+    "model": "DenseNet-121 pre-trained on ImageNet",
+    "arch": "densenet121",
+    "parameters": 6955906,
+    "image_size": 48,
+    "train_images": 2572,
+    "val_images": 542,
+    "test_images": 548,
+    "epochs": 10,
+    "best_epoch": 8,
+    "val_accuracy": 0.9779,
+    "test_accuracy": 0.9726,
+    "sensitivity": 0.9747,
+    "specificity": 0.9705,
+    "precision": 0.9712,
+    "roc_auc": 0.9955,
+    "confusion_matrix": [
+     [
+      263,
+      8
+     ],
+     [
+      7,
+      270
+     ]
+    ]
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 0.4162,
+     "train_acc": 0.8324,
+     "val_loss": 0.185,
+     "val_acc": 0.9428,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.238,
+     "train_acc": 0.9483,
+     "val_loss": 0.1511,
+     "val_acc": 0.9723,
+     "best": true
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.2467,
+     "train_acc": 0.946,
+     "val_loss": 0.1273,
+     "val_acc": 0.952,
+     "best": false
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.2166,
+     "train_acc": 0.9584,
+     "val_loss": 0.1059,
+     "val_acc": 0.9649,
+     "best": false
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.1961,
+     "train_acc": 0.9673,
+     "val_loss": 0.1083,
+     "val_acc": 0.9631,
+     "best": false
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.1853,
+     "train_acc": 0.9712,
+     "val_loss": 0.1007,
+     "val_acc": 0.9686,
+     "best": false
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.173,
+     "train_acc": 0.9809,
+     "val_loss": 0.0959,
+     "val_acc": 0.9705,
+     "best": false
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.1735,
+     "train_acc": 0.9782,
+     "val_loss": 0.0824,
+     "val_acc": 0.9779,
+     "best": true
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.157,
+     "train_acc": 0.9852,
+     "val_loss": 0.0835,
+     "val_acc": 0.976,
+     "best": false
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.1558,
+     "train_acc": 0.9841,
+     "val_loss": 0.0916,
+     "val_acc": 0.9723,
+     "best": false
+    }
+   ],
+   "layers": [
+    {
+     "name": "input image",
+     "shape": "(3, 48, 48)",
+     "params": 0
+    },
+    {
+     "name": "enlarge to 128x128",
+     "shape": "(3, 128, 128)",
+     "params": 0
+    },
+    {
+     "name": "features.conv0: Conv2d",
+     "shape": "(64, 64, 64)",
+     "params": 9408
+    },
+    {
+     "name": "features.norm0: BatchNorm2d",
+     "shape": "(64, 64, 64)",
+     "params": 128
+    },
+    {
+     "name": "features.relu0: ReLU",
+     "shape": "(64, 64, 64)",
+     "params": 0
+    },
+    {
+     "name": "features.pool0: MaxPool2d",
+     "shape": "(64, 32, 32)",
+     "params": 0
+    },
+    {
+     "name": "features.denseblock1: _DenseBlock",
+     "shape": "(256, 32, 32)",
+     "params": 335040
+    },
+    {
+     "name": "features.transition1: _Transition",
+     "shape": "(128, 16, 16)",
+     "params": 33280
+    },
+    {
+     "name": "features.denseblock2: _DenseBlock",
+     "shape": "(512, 16, 16)",
+     "params": 919680
+    },
+    {
+     "name": "features.transition2: _Transition",
+     "shape": "(256, 8, 8)",
+     "params": 132096
+    },
+    {
+     "name": "features.denseblock3: _DenseBlock",
+     "shape": "(1024, 8, 8)",
+     "params": 2837760
+    },
+    {
+     "name": "features.transition3: _Transition",
+     "shape": "(512, 4, 4)",
+     "params": 526336
+    },
+    {
+     "name": "features.denseblock4: _DenseBlock",
+     "shape": "(1024, 4, 4)",
+     "params": 2158080
+    },
+    {
+     "name": "features.norm5: BatchNorm2d",
+     "shape": "(1024, 4, 4)",
+     "params": 2048
+    },
+    {
+     "name": "global avg pool + dropout",
+     "shape": "(1024,)",
+     "params": 0
+    },
+    {
+     "name": "dense (output layer)",
+     "shape": "(2,)",
+     "params": 2050
+    }
+   ],
+   "split": {
+    "train": {
+     "No DR": 1265,
+     "DR": 1307
+    },
+    "val": {
+     "No DR": 269,
+     "DR": 273
+    },
+    "test": {
+     "No DR": 271,
+     "DR": 277
+    }
+   },
+   "optimizer": "AdamW, one-cycle learning rate (peak 0.0005), batch size 32, 10 epochs, all layers fine-tuned",
+   "duplicates": "131 groups, 139 extra copies (each group is kept in one split)",
+   "seconds": 552
+  },
+  {
+   "id": "mobilenet_v3_large_dr",
+   "key": "mobilenet_v3_large",
+   "name": "MobileNetV3-Large",
+   "pretrained": true,
+   "task": "dr",
+   "classes": [
+    "No DR",
+    "DR"
+   ],
+   "file": "mobilenet_v3_large_dr.onnx",
+   "mean": [
+    0.5013841986656189,
+    0.49944713711738586,
+    0.504932701587677
+   ],
+   "std": [
+    0.06261157244443893,
+    0.13451503217220306,
+    0.17583321034908295
+   ],
+   "img_size": 48,
+   "parameters": 2973874,
+   "onnx_mb": 6.0,
+   "metrics": {
+    "task": "dr",
+    "classes": [
+     "No DR",
+     "DR"
+    ],
+    "model": "MobileNetV3-Large pre-trained on ImageNet",
+    "arch": "mobilenet_v3_large",
+    "parameters": 2973874,
+    "image_size": 48,
+    "train_images": 2572,
+    "val_images": 542,
+    "test_images": 548,
+    "epochs": 10,
+    "best_epoch": 10,
+    "val_accuracy": 0.976,
+    "test_accuracy": 0.969,
+    "sensitivity": 0.9711,
+    "specificity": 0.9668,
+    "precision": 0.9676,
+    "roc_auc": 0.9957,
+    "confusion_matrix": [
+     [
+      262,
+      9
+     ],
+     [
+      8,
+      269
+     ]
+    ]
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 0.4104,
+     "train_acc": 0.8297,
+     "val_loss": 0.3028,
+     "val_acc": 0.8838,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.2272,
+     "train_acc": 0.9568,
+     "val_loss": 0.3367,
+     "val_acc": 0.8339,
+     "best": false
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.217,
+     "train_acc": 0.958,
+     "val_loss": 0.1147,
+     "val_acc": 0.9723,
+     "best": true
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.2104,
+     "train_acc": 0.9576,
+     "val_loss": 0.1475,
+     "val_acc": 0.9557,
+     "best": false
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.194,
+     "train_acc": 0.967,
+     "val_loss": 0.0988,
+     "val_acc": 0.9723,
+     "best": true
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.1855,
+     "train_acc": 0.9708,
+     "val_loss": 0.0861,
+     "val_acc": 0.9742,
+     "best": true
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.1735,
+     "train_acc": 0.9747,
+     "val_loss": 0.076,
+     "val_acc": 0.9742,
+     "best": true
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.163,
+     "train_acc": 0.9809,
+     "val_loss": 0.0862,
+     "val_acc": 0.9705,
+     "best": false
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.1591,
+     "train_acc": 0.9837,
+     "val_loss": 0.0763,
+     "val_acc": 0.9742,
+     "best": false
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.1535,
+     "train_acc": 0.9864,
+     "val_loss": 0.0749,
+     "val_acc": 0.976,
+     "best": true
+    }
+   ],
+   "layers": [
+    {
+     "name": "input image",
+     "shape": "(3, 48, 48)",
+     "params": 0
+    },
+    {
+     "name": "enlarge to 128x128",
+     "shape": "(3, 128, 128)",
+     "params": 0
+    },
+    {
+     "name": "features.0: Conv2dNormActivation",
+     "shape": "(16, 64, 64)",
+     "params": 464
+    },
+    {
+     "name": "features.1: InvertedResidual",
+     "shape": "(16, 64, 64)",
+     "params": 464
+    },
+    {
+     "name": "features.2: InvertedResidual",
+     "shape": "(24, 32, 32)",
+     "params": 3440
+    },
+    {
+     "name": "features.3: InvertedResidual",
+     "shape": "(24, 32, 32)",
+     "params": 4440
+    },
+    {
+     "name": "features.4: InvertedResidual",
+     "shape": "(40, 16, 16)",
+     "params": 10328
+    },
+    {
+     "name": "features.5: InvertedResidual",
+     "shape": "(40, 16, 16)",
+     "params": 20992
+    },
+    {
+     "name": "features.6: InvertedResidual",
+     "shape": "(40, 16, 16)",
+     "params": 20992
+    },
+    {
+     "name": "features.7: InvertedResidual",
+     "shape": "(80, 8, 8)",
+     "params": 32080
+    },
+    {
+     "name": "features.8: InvertedResidual",
+     "shape": "(80, 8, 8)",
+     "params": 34760
+    },
+    {
+     "name": "features.9: InvertedResidual",
+     "shape": "(80, 8, 8)",
+     "params": 31992
+    },
+    {
+     "name": "features.10: InvertedResidual",
+     "shape": "(80, 8, 8)",
+     "params": 31992
+    },
+    {
+     "name": "features.11: InvertedResidual",
+     "shape": "(112, 8, 8)",
+     "params": 214424
+    },
+    {
+     "name": "features.12: InvertedResidual",
+     "shape": "(112, 8, 8)",
+     "params": 386120
+    },
+    {
+     "name": "features.13: InvertedResidual",
+     "shape": "(160, 4, 4)",
+     "params": 429224
+    },
+    {
+     "name": "features.14: InvertedResidual",
+     "shape": "(160, 4, 4)",
+     "params": 797360
+    },
+    {
+     "name": "features.15: InvertedResidual",
+     "shape": "(160, 4, 4)",
+     "params": 797360
+    },
+    {
+     "name": "features.16: Conv2dNormActivation",
+     "shape": "(960, 4, 4)",
+     "params": 155520
+    },
+    {
+     "name": "global avg pool + dropout",
+     "shape": "(960,)",
+     "params": 0
+    },
+    {
+     "name": "dense (output layer)",
+     "shape": "(2,)",
+     "params": 1922
+    }
+   ],
+   "split": {
+    "train": {
+     "No DR": 1265,
+     "DR": 1307
+    },
+    "val": {
+     "No DR": 269,
+     "DR": 273
+    },
+    "test": {
+     "No DR": 271,
+     "DR": 277
+    }
+   },
+   "optimizer": "AdamW, one-cycle learning rate (peak 0.001), batch size 32, 10 epochs, all layers fine-tuned",
+   "duplicates": "131 groups, 139 extra copies (each group is kept in one split)",
+   "seconds": 157
+  },
+  {
+   "id": "cnn_grade",
+   "key": "cnn",
+   "name": "5-layer CNN",
+   "pretrained": false,
+   "task": "grade",
+   "classes": [
+    "No DR",
+    "Mild",
+    "Moderate",
+    "Severe",
+    "Proliferative"
+   ],
+   "file": "cnn_grade.onnx",
+   "mean": [
+    0.5013841986656189,
+    0.49944713711738586,
+    0.504932701587677
+   ],
+   "std": [
+    0.06261157244443893,
+    0.13451503217220306,
+    0.17583321034908295
+   ],
+   "img_size": 48,
+   "parameters": 1572133,
+   "onnx_mb": 3.1,
+   "metrics": {
+    "task": "grade",
+    "classes": [
+     "No DR",
+     "Mild",
+     "Moderate",
+     "Severe",
+     "Proliferative"
+    ],
+    "model": "5-layer CNN",
+    "parameters": 1572133,
+    "image_size": 48,
+    "train_images": 2572,
+    "val_images": 542,
+    "test_images": 548,
+    "epochs": 40,
+    "best_epoch": 40,
+    "val_accuracy": 0.8192,
+    "test_accuracy": 0.823,
+    "qwk": 0.863,
+    "dr_yes_no_accuracy": 0.9635,
+    "confusion_matrix": [
+     [
+      262,
+      5,
+      4,
+      0,
+      0
+     ],
+     [
+      3,
+      31,
+      21,
+      0,
+      0
+     ],
+     [
+      6,
+      8,
+      130,
+      1,
+      7
+     ],
+     [
+      0,
+      1,
+      17,
+      5,
+      5
+     ],
+     [
+      2,
+      1,
+      15,
+      1,
+      23
+     ]
+    ]
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 1.2212,
+     "train_acc": 0.577,
+     "val_loss": 0.9206,
+     "val_acc": 0.6624,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.9517,
+     "train_acc": 0.6851,
+     "val_loss": 1.3427,
+     "val_acc": 0.3487,
+     "best": false
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.9419,
+     "train_acc": 0.6932,
+     "val_loss": 0.8423,
+     "val_acc": 0.7048,
+     "best": true
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.9343,
+     "train_acc": 0.6963,
+     "val_loss": 0.8196,
+     "val_acc": 0.69,
+     "best": false
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.9091,
+     "train_acc": 0.701,
+     "val_loss": 1.0492,
+     "val_acc": 0.5941,
+     "best": false
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.8906,
+     "train_acc": 0.7111,
+     "val_loss": 0.7986,
+     "val_acc": 0.7066,
+     "best": true
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.8846,
+     "train_acc": 0.7103,
+     "val_loss": 0.7699,
+     "val_acc": 0.6919,
+     "best": false
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.8789,
+     "train_acc": 0.7181,
+     "val_loss": 1.2512,
+     "val_acc": 0.5129,
+     "best": false
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.8807,
+     "train_acc": 0.7154,
+     "val_loss": 1.2184,
+     "val_acc": 0.6015,
+     "best": false
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.8556,
+     "train_acc": 0.7243,
+     "val_loss": 1.2451,
+     "val_acc": 0.4465,
+     "best": false
+    },
+    {
+     "epoch": 11,
+     "train_loss": 0.8435,
+     "train_acc": 0.7267,
+     "val_loss": 0.9477,
+     "val_acc": 0.6863,
+     "best": false
+    },
+    {
+     "epoch": 12,
+     "train_loss": 0.8407,
+     "train_acc": 0.7236,
+     "val_loss": 1.3966,
+     "val_acc": 0.5369,
+     "best": false
+    },
+    {
+     "epoch": 13,
+     "train_loss": 0.828,
+     "train_acc": 0.7379,
+     "val_loss": 1.0994,
+     "val_acc": 0.6421,
+     "best": false
+    },
+    {
+     "epoch": 14,
+     "train_loss": 0.8112,
+     "train_acc": 0.7446,
+     "val_loss": 1.6329,
+     "val_acc": 0.5517,
+     "best": false
+    },
+    {
+     "epoch": 15,
+     "train_loss": 0.8104,
+     "train_acc": 0.7387,
+     "val_loss": 0.8257,
+     "val_acc": 0.7325,
+     "best": true
+    },
+    {
+     "epoch": 16,
+     "train_loss": 0.7946,
+     "train_acc": 0.7442,
+     "val_loss": 1.118,
+     "val_acc": 0.5978,
+     "best": false
+    },
+    {
+     "epoch": 17,
+     "train_loss": 0.8091,
+     "train_acc": 0.7457,
+     "val_loss": 0.7404,
+     "val_acc": 0.738,
+     "best": true
+    },
+    {
+     "epoch": 18,
+     "train_loss": 0.7814,
+     "train_acc": 0.7527,
+     "val_loss": 0.6924,
+     "val_acc": 0.7509,
+     "best": true
+    },
+    {
+     "epoch": 19,
+     "train_loss": 0.7786,
+     "train_acc": 0.7582,
+     "val_loss": 0.9061,
+     "val_acc": 0.703,
+     "best": false
+    },
+    {
+     "epoch": 20,
+     "train_loss": 0.7624,
+     "train_acc": 0.7582,
+     "val_loss": 0.7103,
+     "val_acc": 0.7638,
+     "best": true
+    },
+    {
+     "epoch": 21,
+     "train_loss": 0.7666,
+     "train_acc": 0.7621,
+     "val_loss": 0.6202,
+     "val_acc": 0.786,
+     "best": true
+    },
+    {
+     "epoch": 22,
+     "train_loss": 0.7585,
+     "train_acc": 0.7617,
+     "val_loss": 0.8091,
+     "val_acc": 0.7159,
+     "best": false
+    },
+    {
+     "epoch": 23,
+     "train_loss": 0.7497,
+     "train_acc": 0.7706,
+     "val_loss": 0.6144,
+     "val_acc": 0.7897,
+     "best": true
+    },
+    {
+     "epoch": 24,
+     "train_loss": 0.7396,
+     "train_acc": 0.7737,
+     "val_loss": 0.6291,
+     "val_acc": 0.7934,
+     "best": true
+    },
+    {
+     "epoch": 25,
+     "train_loss": 0.7402,
+     "train_acc": 0.7706,
+     "val_loss": 1.4958,
+     "val_acc": 0.4446,
+     "best": false
+    },
+    {
+     "epoch": 26,
+     "train_loss": 0.7284,
+     "train_acc": 0.7862,
+     "val_loss": 0.661,
+     "val_acc": 0.7694,
+     "best": false
+    },
+    {
+     "epoch": 27,
+     "train_loss": 0.7188,
+     "train_acc": 0.785,
+     "val_loss": 0.6866,
+     "val_acc": 0.7546,
+     "best": false
+    },
+    {
+     "epoch": 28,
+     "train_loss": 0.7084,
+     "train_acc": 0.7881,
+     "val_loss": 0.6174,
+     "val_acc": 0.7749,
+     "best": false
+    },
+    {
+     "epoch": 29,
+     "train_loss": 0.7005,
+     "train_acc": 0.797,
+     "val_loss": 0.5568,
+     "val_acc": 0.8044,
+     "best": true
+    },
+    {
+     "epoch": 30,
+     "train_loss": 0.6882,
+     "train_acc": 0.7982,
+     "val_loss": 0.5662,
+     "val_acc": 0.7915,
+     "best": false
+    },
+    {
+     "epoch": 31,
+     "train_loss": 0.7018,
+     "train_acc": 0.7939,
+     "val_loss": 0.6598,
+     "val_acc": 0.762,
+     "best": false
+    },
+    {
+     "epoch": 32,
+     "train_loss": 0.678,
+     "train_acc": 0.8013,
+     "val_loss": 0.5644,
+     "val_acc": 0.7934,
+     "best": false
+    },
+    {
+     "epoch": 33,
+     "train_loss": 0.6761,
+     "train_acc": 0.8013,
+     "val_loss": 0.5611,
+     "val_acc": 0.8026,
+     "best": false
+    },
+    {
+     "epoch": 34,
+     "train_loss": 0.6664,
+     "train_acc": 0.8087,
+     "val_loss": 0.5645,
+     "val_acc": 0.8192,
+     "best": true
+    },
+    {
+     "epoch": 35,
+     "train_loss": 0.6417,
+     "train_acc": 0.818,
+     "val_loss": 0.546,
+     "val_acc": 0.8137,
+     "best": false
+    },
+    {
+     "epoch": 36,
+     "train_loss": 0.653,
+     "train_acc": 0.8169,
+     "val_loss": 0.5407,
+     "val_acc": 0.8137,
+     "best": false
+    },
+    {
+     "epoch": 37,
+     "train_loss": 0.6452,
+     "train_acc": 0.8208,
+     "val_loss": 0.5323,
+     "val_acc": 0.8155,
+     "best": false
+    },
+    {
+     "epoch": 38,
+     "train_loss": 0.6415,
+     "train_acc": 0.8204,
+     "val_loss": 0.5297,
+     "val_acc": 0.8192,
+     "best": true
+    },
+    {
+     "epoch": 39,
+     "train_loss": 0.6327,
+     "train_acc": 0.8281,
+     "val_loss": 0.5315,
+     "val_acc": 0.8192,
+     "best": false
+    },
+    {
+     "epoch": 40,
+     "train_loss": 0.6345,
+     "train_acc": 0.8231,
+     "val_loss": 0.5293,
+     "val_acc": 0.8192,
+     "best": true
+    }
+   ],
+   "layers": [
+    {
+     "name": "input image",
+     "shape": "(3, 48, 48)",
+     "params": 0
+    },
+    {
+     "name": "conv layer 1",
+     "shape": "(32, 48, 48)",
+     "params": 928
+    },
+    {
+     "name": "conv layer 2",
+     "shape": "(64, 24, 24)",
+     "params": 18560
+    },
+    {
+     "name": "conv layer 3",
+     "shape": "(128, 12, 12)",
+     "params": 73984
+    },
+    {
+     "name": "conv layer 4",
+     "shape": "(256, 6, 6)",
+     "params": 295424
+    },
+    {
+     "name": "conv layer 5",
+     "shape": "(512, 3, 3)",
+     "params": 1180672
+    },
+    {
+     "name": "global avg pool + dropout",
+     "shape": "(512,)",
+     "params": 0
+    },
+    {
+     "name": "dense (output layer)",
+     "shape": "(5,)",
+     "params": 2565
+    }
+   ],
+   "split": {
+    "train": {
+     "No DR": 1265,
+     "Mild": 260,
+     "Moderate": 703,
+     "Severe": 136,
+     "Proliferative": 208
+    },
+    "val": {
+     "No DR": 269,
+     "Mild": 55,
+     "Moderate": 144,
+     "Severe": 29,
+     "Proliferative": 45
+    },
+    "test": {
+     "No DR": 271,
+     "Mild": 55,
+     "Moderate": 152,
+     "Severe": 28,
+     "Proliferative": 42
+    }
+   },
+   "optimizer": "AdamW, one-cycle learning rate (peak 0.002), batch size 32, 40 epochs",
+   "duplicates": "131 groups, 139 extra copies (each group is kept in one split)",
+   "seconds": 173
+  },
+  {
+   "id": "resnet18_grade",
+   "key": "resnet18",
+   "name": "ResNet-18",
+   "pretrained": true,
+   "task": "grade",
+   "classes": [
+    "No DR",
+    "Mild",
+    "Moderate",
+    "Severe",
+    "Proliferative"
+   ],
+   "file": "resnet18_grade.onnx",
+   "mean": [
+    0.5013841986656189,
+    0.49944713711738586,
+    0.504932701587677
+   ],
+   "std": [
+    0.06261157244443893,
+    0.13451503217220306,
+    0.17583321034908295
+   ],
+   "img_size": 48,
+   "parameters": 11179077,
+   "onnx_mb": 22.4,
+   "metrics": {
+    "task": "grade",
+    "classes": [
+     "No DR",
+     "Mild",
+     "Moderate",
+     "Severe",
+     "Proliferative"
+    ],
+    "model": "ResNet-18 pre-trained on ImageNet",
+    "parameters": 11179077,
+    "image_size": 48,
+    "train_images": 2572,
+    "val_images": 542,
+    "test_images": 548,
+    "epochs": 10,
+    "best_epoch": 9,
+    "val_accuracy": 0.8266,
+    "test_accuracy": 0.8376,
+    "qwk": 0.8781,
+    "dr_yes_no_accuracy": 0.9617,
+    "confusion_matrix": [
+     [
+      262,
+      6,
+      3,
+      0,
+      0
+     ],
+     [
+      6,
+      30,
+      19,
+      0,
+      0
+     ],
+     [
+      4,
+      3,
+      141,
+      1,
+      3
+     ],
+     [
+      1,
+      0,
+      18,
+      5,
+      4
+     ],
+     [
+      1,
+      2,
+      15,
+      3,
+      21
+     ]
+    ]
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 1.2765,
+     "train_acc": 0.5288,
+     "val_loss": 0.7799,
+     "val_acc": 0.7196,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.9151,
+     "train_acc": 0.7158,
+     "val_loss": 0.7293,
+     "val_acc": 0.738,
+     "best": true
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.8336,
+     "train_acc": 0.7368,
+     "val_loss": 0.6427,
+     "val_acc": 0.7565,
+     "best": true
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.7833,
+     "train_acc": 0.7547,
+     "val_loss": 0.6939,
+     "val_acc": 0.7343,
+     "best": false
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.7301,
+     "train_acc": 0.7792,
+     "val_loss": 0.7184,
+     "val_acc": 0.7731,
+     "best": true
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.7129,
+     "train_acc": 0.7858,
+     "val_loss": 0.6657,
+     "val_acc": 0.7362,
+     "best": false
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.6867,
+     "train_acc": 0.8048,
+     "val_loss": 0.5609,
+     "val_acc": 0.786,
+     "best": true
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.651,
+     "train_acc": 0.8138,
+     "val_loss": 0.5201,
+     "val_acc": 0.8026,
+     "best": true
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.6106,
+     "train_acc": 0.839,
+     "val_loss": 0.4999,
+     "val_acc": 0.8266,
+     "best": true
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.5889,
+     "train_acc": 0.8433,
+     "val_loss": 0.5067,
+     "val_acc": 0.8173,
+     "best": false
+    }
+   ],
+   "layers": [
+    {
+     "name": "input image",
+     "shape": "(3, 48, 48)",
+     "params": 0
+    },
+    {
+     "name": "enlarge to 128x128",
+     "shape": "(3, 128, 128)",
+     "params": 0
+    },
+    {
+     "name": "stem: conv 7x7 + BN + ReLU + max-pool",
+     "shape": "(64, 32, 32)",
+     "params": 9536
+    },
+    {
+     "name": "layer 1: 2 residual blocks",
+     "shape": "(64, 32, 32)",
+     "params": 147968
+    },
+    {
+     "name": "layer 2: 2 residual blocks",
+     "shape": "(128, 16, 16)",
+     "params": 525568
+    },
+    {
+     "name": "layer 3: 2 residual blocks",
+     "shape": "(256, 8, 8)",
+     "params": 2099712
+    },
+    {
+     "name": "layer 4: 2 residual blocks",
+     "shape": "(512, 4, 4)",
+     "params": 8393728
+    },
+    {
+     "name": "global avg pool + dropout",
+     "shape": "(512,)",
+     "params": 0
+    },
+    {
+     "name": "dense (output layer)",
+     "shape": "(5,)",
+     "params": 2565
+    }
+   ],
+   "split": {
+    "train": {
+     "No DR": 1265,
+     "Mild": 260,
+     "Moderate": 703,
+     "Severe": 136,
+     "Proliferative": 208
+    },
+    "val": {
+     "No DR": 269,
+     "Mild": 55,
+     "Moderate": 144,
+     "Severe": 29,
+     "Proliferative": 45
+    },
+    "test": {
+     "No DR": 271,
+     "Mild": 55,
+     "Moderate": 152,
+     "Severe": 28,
+     "Proliferative": 42
+    }
+   },
+   "optimizer": "AdamW, one-cycle learning rate (peak 0.0005), batch size 32, 10 epochs, all layers fine-tuned",
+   "duplicates": "131 groups, 139 extra copies (each group is kept in one split)",
+   "seconds": 234
+  },
+  {
+   "id": "efficientnet_b0_grade",
+   "key": "efficientnet_b0",
+   "name": "EfficientNet-B0",
+   "pretrained": true,
+   "task": "grade",
+   "classes": [
+    "No DR",
+    "Mild",
+    "Moderate",
+    "Severe",
+    "Proliferative"
+   ],
+   "file": "efficientnet_b0_grade.onnx",
+   "mean": [
+    0.5013841986656189,
+    0.49944713711738586,
+    0.504932701587677
+   ],
+   "std": [
+    0.06261157244443893,
+    0.13451503217220306,
+    0.17583321034908295
+   ],
+   "img_size": 48,
+   "parameters": 4013953,
+   "onnx_mb": 8.1,
+   "metrics": {
+    "task": "grade",
+    "classes": [
+     "No DR",
+     "Mild",
+     "Moderate",
+     "Severe",
+     "Proliferative"
+    ],
+    "model": "EfficientNet-B0 pre-trained on ImageNet",
+    "arch": "efficientnet_b0",
+    "parameters": 4013953,
+    "image_size": 48,
+    "train_images": 2572,
+    "val_images": 542,
+    "test_images": 548,
+    "epochs": 10,
+    "best_epoch": 9,
+    "val_accuracy": 0.8266,
+    "test_accuracy": 0.8248,
+    "qwk": 0.8592,
+    "dr_yes_no_accuracy": 0.9599,
+    "confusion_matrix": [
+     [
+      260,
+      7,
+      4,
+      0,
+      0
+     ],
+     [
+      5,
+      35,
+      15,
+      0,
+      0
+     ],
+     [
+      4,
+      7,
+      127,
+      5,
+      9
+     ],
+     [
+      1,
+      0,
+      11,
+      10,
+      6
+     ],
+     [
+      1,
+      4,
+      14,
+      3,
+      20
+     ]
+    ]
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 1.232,
+     "train_acc": 0.5486,
+     "val_loss": 0.8049,
+     "val_acc": 0.714,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.857,
+     "train_acc": 0.7298,
+     "val_loss": 0.7093,
+     "val_acc": 0.7325,
+     "best": true
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.8051,
+     "train_acc": 0.7387,
+     "val_loss": 0.6943,
+     "val_acc": 0.7269,
+     "best": false
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.7707,
+     "train_acc": 0.7636,
+     "val_loss": 0.6242,
+     "val_acc": 0.7915,
+     "best": true
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.718,
+     "train_acc": 0.785,
+     "val_loss": 0.5845,
+     "val_acc": 0.7749,
+     "best": false
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.6772,
+     "train_acc": 0.8048,
+     "val_loss": 0.5443,
+     "val_acc": 0.7878,
+     "best": false
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.6343,
+     "train_acc": 0.8204,
+     "val_loss": 0.5518,
+     "val_acc": 0.7952,
+     "best": true
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.5889,
+     "train_acc": 0.8406,
+     "val_loss": 0.528,
+     "val_acc": 0.8081,
+     "best": true
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.5516,
+     "train_acc": 0.8593,
+     "val_loss": 0.5163,
+     "val_acc": 0.8266,
+     "best": true
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.5322,
+     "train_acc": 0.8643,
+     "val_loss": 0.5184,
+     "val_acc": 0.8173,
+     "best": false
+    }
+   ],
+   "layers": [
+    {
+     "name": "input image",
+     "shape": "(3, 48, 48)",
+     "params": 0
+    },
+    {
+     "name": "enlarge to 128x128",
+     "shape": "(3, 128, 128)",
+     "params": 0
+    },
+    {
+     "name": "features.0: Conv2dNormActivation",
+     "shape": "(32, 64, 64)",
+     "params": 928
+    },
+    {
+     "name": "features.1: Sequential",
+     "shape": "(16, 64, 64)",
+     "params": 1448
+    },
+    {
+     "name": "features.2: Sequential",
+     "shape": "(24, 32, 32)",
+     "params": 16714
+    },
+    {
+     "name": "features.3: Sequential",
+     "shape": "(40, 16, 16)",
+     "params": 46640
+    },
+    {
+     "name": "features.4: Sequential",
+     "shape": "(80, 8, 8)",
+     "params": 242930
+    },
+    {
+     "name": "features.5: Sequential",
+     "shape": "(112, 8, 8)",
+     "params": 543148
+    },
+    {
+     "name": "features.6: Sequential",
+     "shape": "(192, 4, 4)",
+     "params": 2026348
+    },
+    {
+     "name": "features.7: Sequential",
+     "shape": "(320, 4, 4)",
+     "params": 717232
+    },
+    {
+     "name": "features.8: Conv2dNormActivation",
+     "shape": "(1280, 4, 4)",
+     "params": 412160
+    },
+    {
+     "name": "global avg pool + dropout",
+     "shape": "(1280,)",
+     "params": 0
+    },
+    {
+     "name": "dense (output layer)",
+     "shape": "(5,)",
+     "params": 6405
+    }
+   ],
+   "split": {
+    "train": {
+     "No DR": 1265,
+     "Mild": 260,
+     "Moderate": 703,
+     "Severe": 136,
+     "Proliferative": 208
+    },
+    "val": {
+     "No DR": 269,
+     "Mild": 55,
+     "Moderate": 144,
+     "Severe": 29,
+     "Proliferative": 45
+    },
+    "test": {
+     "No DR": 271,
+     "Mild": 55,
+     "Moderate": 152,
+     "Severe": 28,
+     "Proliferative": 42
+    }
+   },
+   "optimizer": "AdamW, one-cycle learning rate (peak 0.001), batch size 32, 10 epochs, all layers fine-tuned",
+   "duplicates": "131 groups, 139 extra copies (each group is kept in one split)",
+   "seconds": 292
+  },
+  {
+   "id": "densenet121_grade",
+   "key": "densenet121",
+   "name": "DenseNet-121",
+   "pretrained": true,
+   "task": "grade",
+   "classes": [
+    "No DR",
+    "Mild",
+    "Moderate",
+    "Severe",
+    "Proliferative"
+   ],
+   "file": "densenet121_grade.onnx",
+   "mean": [
+    0.5013841986656189,
+    0.49944713711738586,
+    0.504932701587677
+   ],
+   "std": [
+    0.06261157244443893,
+    0.13451503217220306,
+    0.17583321034908295
+   ],
+   "img_size": 48,
+   "parameters": 6958981,
+   "onnx_mb": 14.2,
+   "metrics": {
+    "task": "grade",
+    "classes": [
+     "No DR",
+     "Mild",
+     "Moderate",
+     "Severe",
+     "Proliferative"
+    ],
+    "model": "DenseNet-121 pre-trained on ImageNet",
+    "arch": "densenet121",
+    "parameters": 6958981,
+    "image_size": 48,
+    "train_images": 2572,
+    "val_images": 542,
+    "test_images": 548,
+    "epochs": 10,
+    "best_epoch": 7,
+    "val_accuracy": 0.8229,
+    "test_accuracy": 0.823,
+    "qwk": 0.8617,
+    "dr_yes_no_accuracy": 0.9617,
+    "confusion_matrix": [
+     [
+      264,
+      6,
+      1,
+      0,
+      0
+     ],
+     [
+      7,
+      25,
+      23,
+      0,
+      0
+     ],
+     [
+      4,
+      6,
+      129,
+      5,
+      8
+     ],
+     [
+      1,
+      1,
+      10,
+      12,
+      4
+     ],
+     [
+      2,
+      3,
+      13,
+      3,
+      21
+     ]
+    ]
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 1.2777,
+     "train_acc": 0.5039,
+     "val_loss": 0.7832,
+     "val_acc": 0.714,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.8533,
+     "train_acc": 0.729,
+     "val_loss": 0.69,
+     "val_acc": 0.7325,
+     "best": true
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.8188,
+     "train_acc": 0.7434,
+     "val_loss": 0.6636,
+     "val_acc": 0.7675,
+     "best": true
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.7673,
+     "train_acc": 0.757,
+     "val_loss": 0.6114,
+     "val_acc": 0.7823,
+     "best": true
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.7199,
+     "train_acc": 0.7815,
+     "val_loss": 0.5661,
+     "val_acc": 0.8137,
+     "best": true
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.6701,
+     "train_acc": 0.8025,
+     "val_loss": 0.5508,
+     "val_acc": 0.7841,
+     "best": false
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.6326,
+     "train_acc": 0.8235,
+     "val_loss": 0.5182,
+     "val_acc": 0.8229,
+     "best": true
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.6,
+     "train_acc": 0.8445,
+     "val_loss": 0.4969,
+     "val_acc": 0.797,
+     "best": false
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.5601,
+     "train_acc": 0.8569,
+     "val_loss": 0.4857,
+     "val_acc": 0.8173,
+     "best": false
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.5368,
+     "train_acc": 0.8628,
+     "val_loss": 0.4991,
+     "val_acc": 0.8137,
+     "best": false
+    }
+   ],
+   "layers": [
+    {
+     "name": "input image",
+     "shape": "(3, 48, 48)",
+     "params": 0
+    },
+    {
+     "name": "enlarge to 128x128",
+     "shape": "(3, 128, 128)",
+     "params": 0
+    },
+    {
+     "name": "features.conv0: Conv2d",
+     "shape": "(64, 64, 64)",
+     "params": 9408
+    },
+    {
+     "name": "features.norm0: BatchNorm2d",
+     "shape": "(64, 64, 64)",
+     "params": 128
+    },
+    {
+     "name": "features.relu0: ReLU",
+     "shape": "(64, 64, 64)",
+     "params": 0
+    },
+    {
+     "name": "features.pool0: MaxPool2d",
+     "shape": "(64, 32, 32)",
+     "params": 0
+    },
+    {
+     "name": "features.denseblock1: _DenseBlock",
+     "shape": "(256, 32, 32)",
+     "params": 335040
+    },
+    {
+     "name": "features.transition1: _Transition",
+     "shape": "(128, 16, 16)",
+     "params": 33280
+    },
+    {
+     "name": "features.denseblock2: _DenseBlock",
+     "shape": "(512, 16, 16)",
+     "params": 919680
+    },
+    {
+     "name": "features.transition2: _Transition",
+     "shape": "(256, 8, 8)",
+     "params": 132096
+    },
+    {
+     "name": "features.denseblock3: _DenseBlock",
+     "shape": "(1024, 8, 8)",
+     "params": 2837760
+    },
+    {
+     "name": "features.transition3: _Transition",
+     "shape": "(512, 4, 4)",
+     "params": 526336
+    },
+    {
+     "name": "features.denseblock4: _DenseBlock",
+     "shape": "(1024, 4, 4)",
+     "params": 2158080
+    },
+    {
+     "name": "features.norm5: BatchNorm2d",
+     "shape": "(1024, 4, 4)",
+     "params": 2048
+    },
+    {
+     "name": "global avg pool + dropout",
+     "shape": "(1024,)",
+     "params": 0
+    },
+    {
+     "name": "dense (output layer)",
+     "shape": "(5,)",
+     "params": 5125
+    }
+   ],
+   "split": {
+    "train": {
+     "No DR": 1265,
+     "Mild": 260,
+     "Moderate": 703,
+     "Severe": 136,
+     "Proliferative": 208
+    },
+    "val": {
+     "No DR": 269,
+     "Mild": 55,
+     "Moderate": 144,
+     "Severe": 29,
+     "Proliferative": 45
+    },
+    "test": {
+     "No DR": 271,
+     "Mild": 55,
+     "Moderate": 152,
+     "Severe": 28,
+     "Proliferative": 42
+    }
+   },
+   "optimizer": "AdamW, one-cycle learning rate (peak 0.0005), batch size 32, 10 epochs, all layers fine-tuned",
+   "duplicates": "131 groups, 139 extra copies (each group is kept in one split)",
+   "seconds": 538
+  },
+  {
+   "id": "mobilenet_v3_large_grade",
+   "key": "mobilenet_v3_large",
+   "name": "MobileNetV3-Large",
+   "pretrained": true,
+   "task": "grade",
+   "classes": [
+    "No DR",
+    "Mild",
+    "Moderate",
+    "Severe",
+    "Proliferative"
+   ],
+   "file": "mobilenet_v3_large_grade.onnx",
+   "mean": [
+    0.5013841986656189,
+    0.49944713711738586,
+    0.504932701587677
+   ],
+   "std": [
+    0.06261157244443893,
+    0.13451503217220306,
+    0.17583321034908295
+   ],
+   "img_size": 48,
+   "parameters": 2976757,
+   "onnx_mb": 6.0,
+   "metrics": {
+    "task": "grade",
+    "classes": [
+     "No DR",
+     "Mild",
+     "Moderate",
+     "Severe",
+     "Proliferative"
+    ],
+    "model": "MobileNetV3-Large pre-trained on ImageNet",
+    "arch": "mobilenet_v3_large",
+    "parameters": 2976757,
+    "image_size": 48,
+    "train_images": 2572,
+    "val_images": 542,
+    "test_images": 548,
+    "epochs": 10,
+    "best_epoch": 10,
+    "val_accuracy": 0.8192,
+    "test_accuracy": 0.8193,
+    "qwk": 0.8683,
+    "dr_yes_no_accuracy": 0.9635,
+    "confusion_matrix": [
+     [
+      264,
+      6,
+      1,
+      0,
+      0
+     ],
+     [
+      7,
+      33,
+      14,
+      0,
+      1
+     ],
+     [
+      4,
+      12,
+      121,
+      4,
+      11
+     ],
+     [
+      1,
+      0,
+      13,
+      7,
+      7
+     ],
+     [
+      1,
+      3,
+      11,
+      3,
+      24
+     ]
+    ]
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 1.1592,
+     "train_acc": 0.5824,
+     "val_loss": 0.9582,
+     "val_acc": 0.6144,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.8261,
+     "train_acc": 0.7344,
+     "val_loss": 0.7471,
+     "val_acc": 0.7362,
+     "best": true
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.7797,
+     "train_acc": 0.7496,
+     "val_loss": 0.8248,
+     "val_acc": 0.7122,
+     "best": false
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.7408,
+     "train_acc": 0.7706,
+     "val_loss": 0.6257,
+     "val_acc": 0.7694,
+     "best": true
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.6938,
+     "train_acc": 0.7963,
+     "val_loss": 0.7758,
+     "val_acc": 0.7159,
+     "best": false
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.6671,
+     "train_acc": 0.8044,
+     "val_loss": 0.6512,
+     "val_acc": 0.762,
+     "best": false
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.6271,
+     "train_acc": 0.8196,
+     "val_loss": 0.572,
+     "val_acc": 0.7823,
+     "best": true
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.5694,
+     "train_acc": 0.8468,
+     "val_loss": 0.5392,
+     "val_acc": 0.8007,
+     "best": true
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.5374,
+     "train_acc": 0.8565,
+     "val_loss": 0.5325,
+     "val_acc": 0.8063,
+     "best": true
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.5236,
+     "train_acc": 0.8717,
+     "val_loss": 0.5297,
+     "val_acc": 0.8192,
+     "best": true
+    }
+   ],
+   "layers": [
+    {
+     "name": "input image",
+     "shape": "(3, 48, 48)",
+     "params": 0
+    },
+    {
+     "name": "enlarge to 128x128",
+     "shape": "(3, 128, 128)",
+     "params": 0
+    },
+    {
+     "name": "features.0: Conv2dNormActivation",
+     "shape": "(16, 64, 64)",
+     "params": 464
+    },
+    {
+     "name": "features.1: InvertedResidual",
+     "shape": "(16, 64, 64)",
+     "params": 464
+    },
+    {
+     "name": "features.2: InvertedResidual",
+     "shape": "(24, 32, 32)",
+     "params": 3440
+    },
+    {
+     "name": "features.3: InvertedResidual",
+     "shape": "(24, 32, 32)",
+     "params": 4440
+    },
+    {
+     "name": "features.4: InvertedResidual",
+     "shape": "(40, 16, 16)",
+     "params": 10328
+    },
+    {
+     "name": "features.5: InvertedResidual",
+     "shape": "(40, 16, 16)",
+     "params": 20992
+    },
+    {
+     "name": "features.6: InvertedResidual",
+     "shape": "(40, 16, 16)",
+     "params": 20992
+    },
+    {
+     "name": "features.7: InvertedResidual",
+     "shape": "(80, 8, 8)",
+     "params": 32080
+    },
+    {
+     "name": "features.8: InvertedResidual",
+     "shape": "(80, 8, 8)",
+     "params": 34760
+    },
+    {
+     "name": "features.9: InvertedResidual",
+     "shape": "(80, 8, 8)",
+     "params": 31992
+    },
+    {
+     "name": "features.10: InvertedResidual",
+     "shape": "(80, 8, 8)",
+     "params": 31992
+    },
+    {
+     "name": "features.11: InvertedResidual",
+     "shape": "(112, 8, 8)",
+     "params": 214424
+    },
+    {
+     "name": "features.12: InvertedResidual",
+     "shape": "(112, 8, 8)",
+     "params": 386120
+    },
+    {
+     "name": "features.13: InvertedResidual",
+     "shape": "(160, 4, 4)",
+     "params": 429224
+    },
+    {
+     "name": "features.14: InvertedResidual",
+     "shape": "(160, 4, 4)",
+     "params": 797360
+    },
+    {
+     "name": "features.15: InvertedResidual",
+     "shape": "(160, 4, 4)",
+     "params": 797360
+    },
+    {
+     "name": "features.16: Conv2dNormActivation",
+     "shape": "(960, 4, 4)",
+     "params": 155520
+    },
+    {
+     "name": "global avg pool + dropout",
+     "shape": "(960,)",
+     "params": 0
+    },
+    {
+     "name": "dense (output layer)",
+     "shape": "(5,)",
+     "params": 4805
+    }
+   ],
+   "split": {
+    "train": {
+     "No DR": 1265,
+     "Mild": 260,
+     "Moderate": 703,
+     "Severe": 136,
+     "Proliferative": 208
+    },
+    "val": {
+     "No DR": 269,
+     "Mild": 55,
+     "Moderate": 144,
+     "Severe": 29,
+     "Proliferative": 45
+    },
+    "test": {
+     "No DR": 271,
+     "Mild": 55,
+     "Moderate": 152,
+     "Severe": 28,
+     "Proliferative": 42
+    }
+   },
+   "optimizer": "AdamW, one-cycle learning rate (peak 0.001), batch size 32, 10 epochs, all layers fine-tuned",
+   "duplicates": "131 groups, 139 extra copies (each group is kept in one split)",
+   "seconds": 148
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+  "task": "dr",
+  "classes": [
+    "No DR",
+    "DR"
+  ],
+  "model": "EfficientNet-B0 pre-trained on ImageNet",
+  "arch": "efficientnet_b0",
+  "parameters": 4010110,
+  "image_size": 48,
+  "train_images": 2572,
+  "val_images": 542,
+  "test_images": 548,
+  "epochs": 10,
+  "best_epoch": 6,
+  "val_accuracy": 0.9779,
+  "test_accuracy": 0.9617,
+  "sensitivity": 0.9603,
+  "specificity": 0.9631,
+  "precision": 0.9638,
+  "roc_auc": 0.9936,
+  "confusion_matrix": [
+    [
+      261,
+      10
+    ],
+    [
+      11,
+      266
+    ]
+  ]
+}

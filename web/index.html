@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RetinaAI</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --ink: #14171c; --ink-2: #4a5160; --muted: #858b97;
+    --line: #e3e6eb; --accent: #2a78d6; --accent-soft: #e6f0fc; --good: #127a3a; --bad: #c03636;
+    --bar-track: #eef0f4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101215; --surface: #181b20; --ink: #eef0f3; --ink-2: #b7bdc8; --muted: #7e8592;
+      --line: #2a2f37; --accent: #4a90e6; --accent-soft: #1c2a3d; --good: #3fbf6b; --bad: #e46a6a;
+      --bar-track: #242931;
+    }
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 40px 0 24px; }
+  header h1 { margin: 0 0 6px; font-size: 30px; letter-spacing: -0.02em; }
+  header p { margin: 0; color: var(--ink-2); max-width: 720px; }
+  section { margin: 0 0 32px; }
+  h2 { font-size: 19px; margin: 0 0 12px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  .muted { color: var(--muted); font-size: 13px; }
+
+  /* try it */
+  .try { display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
+  .drop { display: block; border: 2px dashed var(--line); border-radius: 10px; padding: 22px 14px; text-align: center;
+          cursor: pointer; color: var(--ink-2); transition: border-color .15s, background .15s; }
+  .drop:hover, .drop.over { border-color: var(--accent); background: var(--accent-soft); }
+  .drop strong { color: var(--accent); }
+  .samples { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .samples button { border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+                    border-radius: 8px; padding: 4px; cursor: pointer; width: 54px; }
+  .samples button:hover, .samples button.on { border-color: var(--accent); }
+  .samples img { width: 44px; height: 44px; object-fit: cover; border-radius: 5px; display: block; }
+  .samples span { font-size: 11px; color: var(--muted); }
+  .photos { display: flex; gap: 12px; margin-top: 16px; }
+  .photos figure { margin: 0; flex: 1; }
+  .photos img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; background: var(--bar-track);
+                image-rendering: auto; }
+  .photos img.px { image-rendering: pixelated; }
+  .photos figcaption { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .truth { margin-top: 10px; font-size: 14px; }
+
+  .groups { display: grid; gap: 16px; }
+  .group h3 { margin: 0 0 10px; font-size: 15px; }
+  .pair { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+  .group .vote { font-size: 13px; color: var(--ink-2); margin: -4px 0 10px; }
+  .tag { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 999px; margin-left: 4px;
+         background: var(--bar-track); color: var(--ink-2); vertical-align: 1px; }
+  .tag.pre { background: var(--accent-soft); color: var(--accent); }
+  .acc { display: flex; align-items: center; gap: 8px; }
+  .acc .track { width: 90px; }
+  .acc .fill { background: var(--accent); }
+  tr.best td.big { color: var(--good); }
+  tr.task-head td { font-weight: 650; background: var(--bg); font-size: 13px; }
+  tr.todo td { color: var(--muted); }
+  code { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--bar-track);
+         padding: 2px 6px; border-radius: 5px; }
+  .models { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .models .card b { display: block; }
+  .models .card .muted { margin: 2px 0 6px; }
+  .models .card p { margin: 0; font-size: 13px; color: var(--ink-2); }
+  .result { border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  .result .who { font-size: 13px; color: var(--ink-2); }
+  .result .answer { font-size: 20px; font-weight: 650; margin: 2px 0 10px; }
+  .row { display: grid; grid-template-columns: 90px 1fr 46px; align-items: center; gap: 8px;
+         font-size: 13px; margin: 4px 0; }
+  .track { height: 8px; background: var(--bar-track); border-radius: 4px; overflow: hidden; }
+  .fill { height: 100%; background: var(--muted); border-radius: 4px; transition: width .35s; }
+  .row.top .fill { background: var(--accent); }
+  .row.top { font-weight: 600; }
+  .pct { text-align: right; font-variant-numeric: tabular-nums; }
+  .ok { color: var(--good); font-weight: 600; } .no { color: var(--bad); font-weight: 600; }
+  .empty { color: var(--muted); padding: 40px 0; text-align: center; }
+
+  /* table */
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; }
+  td.num { font-variant-numeric: tabular-nums; }
+  td.big { font-weight: 650; }
+
+  /* graphs */
+  .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .tabs button { border: 1px solid var(--line); background: var(--surface); color: var(--ink-2);
+                 border-radius: 999px; padding: 6px 12px; cursor: pointer; font: inherit; font-size: 13px; }
+  .tabs button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .plots { display: grid; grid-template-columns: 3fr 2fr; gap: 12px; align-items: start; }
+  .plots img { width: 100%; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .step b { display: block; margin-bottom: 4px; }
+  .step p { margin: 0; font-size: 13px; color: var(--ink-2); }
+  footer { padding: 8px 0 40px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 820px) {
+    .try, .plots { grid-template-columns: 1fr; }
+    .steps, .models { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>RetinaAI</h1>
+    <p>Detects diabetic retinopathy in a retina photo and grades how severe it is. Five models are compared:
+       a 5-layer CNN trained from scratch as the baseline, and <b>4 models pre-trained on ImageNet</b>
+       (ResNet-18, EfficientNet-B0, DenseNet-121, MobileNetV3-Large) fine-tuned with transfer learning.
+       All are trained and tested on the APTOS 2019 dataset (3,662 photos graded by doctors).</p>
+  </header>
+
+  <section>
+    <h2>Try it</h2>
+    <div class="card try">
+      <div>
+        <label class="drop" id="drop">
+          <input type="file" id="file" accept="image/*" hidden>
+          <strong>Upload a retina photo</strong><br>or drop it here
+        </label>
+        <div class="muted" style="margin-top:14px">or pick a sample (doctor's grade 0-4):</div>
+        <div class="samples" id="samples"></div>
+        <div class="photos" id="photos" hidden>
+          <figure><img id="orig" alt="uploaded photo"><figcaption>Photo</figcaption></figure>
+          <figure><img id="seen" class="px" alt="pre-processed photo"><figcaption>What the models see (48 x 48)</figcaption></figure>
+        </div>
+        <div class="truth" id="truth"></div>
+      </div>
+      <div id="results"><div class="empty">Upload a photo or pick a sample to see the predictions.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Test results</h2>
+    <div class="card table-wrap">
+      <table>
+        <thead><tr><th>Model</th><th>Type</th><th>Weights</th><th>Epochs</th><th>Test accuracy</th><th>Other scores</th><th>Test photos</th></tr></thead>
+        <tbody id="table"></tbody>
+      </table>
+      <p class="muted" style="margin:12px 0 0">All models are tested on the same photos, which none of them saw during training. The best model per task is shown in green.
+         Copies of the same photo are kept in one split, so there is no data leakage.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Training graphs</h2>
+    <div class="card">
+      <div class="tabs" id="tabs"></div>
+      <div class="plots" id="plots"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The 4 pre-trained models</h2>
+    <div class="models">
+      <div class="card"><b>ResNet-18</b><div class="muted">2015 &middot; 11.2 M weights</div>
+        <p>Residual blocks: a skip connection adds each block's input to its output, so deep networks still train well.</p></div>
+      <div class="card"><b>EfficientNet-B0</b><div class="muted">2019 &middot; 4.0 M weights</div>
+        <p>MBConv blocks with squeeze-and-excitation; depth, width and resolution are scaled together.</p></div>
+      <div class="card"><b>DenseNet-121</b><div class="muted">2017 &middot; 7.0 M weights</div>
+        <p>Dense blocks: every layer receives the feature maps of all earlier layers in its block, so features are re-used.</p></div>
+      <div class="card"><b>MobileNetV3-Large</b><div class="muted">2019 &middot; 3.0 M weights</div>
+        <p>Light inverted-residual blocks with hard-swish, designed to run fast on phones.</p></div>
+    </div>
+    <p class="muted" style="margin:10px 0 0">Each one first learned on 1.2 M ImageNet photos. Its 1000-class output layer is replaced
+       by a new one for our classes, then all layers are fine-tuned on the retina photos.</p>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="card step"><b>1. Pre-process</b><p>Crop the black border, resize, Ben Graham contrast enhancement, shrink to 48 x 48.</p></div>
+      <div class="card step"><b>2. 5-layer CNN</b><p>5 conv layers (32 to 512 filters) with BatchNorm, ReLU and max-pooling, trained from scratch. 1.57 M weights.</p></div>
+      <div class="card step"><b>3. 4 pre-trained models</b><p>The 48 x 48 photo is enlarged to 128 x 128 and fed to ResNet-18, EfficientNet-B0, DenseNet-121 and MobileNetV3-Large, each fine-tuned (transfer learning).</p></div>
+      <div class="card step"><b>4. Predict</b><p>Each model gives a probability per class; the photo and 3 mirrored copies are averaged. The page also shows how many models agree.</p></div>
+    </div>
+  </section>
+
+  <footer>Student project (Phase 2): 5-layer CNN + 4 pre-trained models. Not a medical tool.</footer>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const TASKS = { dr: "DR detection (No DR / DR)", grade: "DR grade (5 classes)" };
+const GRADES = ["No DR", "Mild", "Moderate", "Severe", "Proliferative"];
+const pct = (v) => (100 * v).toFixed(1) + "%";
+let truth = null;
+
+function esc(s) { return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+
+function renderResults(data) {
+  $("seen").src = data.model_view;
+  $("photos").hidden = false;
+  const html = ["dr", "grade"].map((task) => {
+    const rs = data.results.filter((r) => r.task === task);
+    if (!rs.length) return "";
+    return `<div class="group"><h3>${TASKS[task]}</h3>${vote(rs)}<div class="pair">${rs.map(card).join("")}</div></div>`;
+  }).join("");
+  $("results").innerHTML = `<div class="groups">${html}</div>`;
+  showTruth(data.results);
+}
+
+function vote(rs) {
+  // how many models give each answer, most common first
+  const counts = {};
+  rs.forEach((r) => { const c = r.classes[r.pred]; counts[c] = (counts[c] || 0) + 1; });
+  const [top, n] = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+  return `<div class="vote">${n} of ${rs.length} models say <b>${esc(top)}</b></div>`;
+}
+
+const typeTag = (pre) => pre ? `<span class="tag pre">pre-trained</span>` : `<span class="tag">from scratch</span>`;
+
+function card(r) {
+  const rows = r.classes.map((c, i) =>
+    `<div class="row ${i === r.pred ? "top" : ""}"><span>${esc(c)}</span>
+       <div class="track"><div class="fill" style="width:${(100 * r.probs[i]).toFixed(1)}%"></div></div>
+       <span class="pct">${pct(r.probs[i])}</span></div>`).join("");
+  return `<div class="result"><div class="who">${esc(r.name)}${typeTag(r.pretrained)}<br>${pct(r.test_accuracy)} test accuracy</div>
+          <div class="answer">${esc(r.classes[r.pred])}</div>${rows}</div>`;
+}
+
+function showTruth(results) {
+  if (truth === null) { $("truth").innerHTML = ""; return; }
+  const checks = results.map((r) => {
+    const right = r.task === "dr" ? (r.pred === 1) === (truth > 0) : r.pred === truth;
+    return `${esc(r.name)} (${r.task === "dr" ? "detection" : "grade"}): <span class="${right ? "ok" : "no"}">${right ? "correct" : "wrong"}</span>`;
+  });
+  $("truth").innerHTML = `<b>Doctor's grade: ${truth} (${GRADES[truth]})</b><br><span class="muted">${checks.join("<br>")}</span>`;
+}
+
+async function call(url, options) {
+  $("results").innerHTML = `<div class="empty">Checking the photo...</div>`;
+  const res = await fetch(url, options);
+  const data = await res.json();
+  if (!res.ok) { $("results").innerHTML = `<div class="empty">${esc(data.detail || "Something went wrong")}</div>`; return; }
+  renderResults(data);
+}
+
+function predictFile(file) {
+  if (!file) return;
+  truth = null;
+  document.querySelectorAll(".samples button").forEach((b) => b.classList.remove("on"));
+  $("orig").src = URL.createObjectURL(file);
+  const form = new FormData();
+  form.append("file", file);
+  call("/api/predict", { method: "POST", body: form });
+}
+
+$("file").addEventListener("change", (e) => predictFile(e.target.files[0]));
+const drop = $("drop");
+["dragenter", "dragover"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", (e) => predictFile(e.dataTransfer.files[0]));
+
+async function loadSamples() {
+  const names = await (await fetch("/api/samples")).json();
+  $("samples").innerHTML = names.map((n) => {
+    const g = (n.match(/grade(\d)/) || [])[1];
+    return `<button data-name="${esc(n)}" title="${esc(n)}"><img src="/samples/${encodeURIComponent(n)}" alt=""><span>${g !== undefined ? "grade " + g : esc(n)}</span></button>`;
+  }).join("");
+  $("samples").querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll(".samples button").forEach((x) => x.classList.toggle("on", x === b));
+    const g = (b.dataset.name.match(/grade(\d)/) || [])[1];
+    truth = g !== undefined ? Number(g) : null;
+    $("orig").src = "/samples/" + encodeURIComponent(b.dataset.name);
+    call("/api/predict-sample/" + encodeURIComponent(b.dataset.name));
+  }));
+}
+
+function scores(m, task) {
+  const p = (v) => v == null ? "–" : pct(v), f = (v) => v == null ? "–" : v.toFixed(3);
+  if (task === "dr" && m.sensitivity !== undefined)
+    return `sensitivity ${p(m.sensitivity)} · specificity ${p(m.specificity)} · ROC-AUC ${f(m.roc_auc)}`;
+  if (task === "grade" && m.qwk !== undefined)
+    return `QWK ${f(m.qwk)} · DR yes/no ${p(m.dr_yes_no_accuracy)}`;
+  return "";
+}
+
+const weights = (n) => n ? (n / 1e6).toFixed(1) + " M" : "";
+
+async function loadModels() {
+  const [models, missing] = await Promise.all([
+    fetch("/api/models").then((r) => r.json()), fetch("/api/missing").then((r) => r.json())]);
+  if (!models.length && !missing.length) {
+    $("table").innerHTML = `<tr><td colspan="7" class="muted">No trained model found. Run python3 train_cnn.py first.</td></tr>`;
+    return;
+  }
+  $("table").innerHTML = ["dr", "grade"].map((task) => {
+    const ms = models.filter((x) => x.task === task);
+    const todo = missing.filter((x) => x.task === task);
+    if (!ms.length && !todo.length) return "";
+    const best = Math.max(...ms.map((x) => x.metrics.test_accuracy ?? 0));
+    const rows = ms.map((x) => {
+      const m = x.metrics, a = m.test_accuracy;
+      return `<tr class="${a === best ? "best" : ""}"><td>${esc(x.name)}</td>
+              <td>${x.pretrained ? "pre-trained (ImageNet)" : "from scratch"}</td>
+              <td class="num">${weights(m.parameters ?? x.parameters)}</td>
+              <td class="num">${m.epochs ?? ""}</td>
+              <td class="num big">${a !== undefined ? `<div class="acc"><span>${pct(a)}</span>
+                 <div class="track"><div class="fill" style="width:${(100 * a).toFixed(1)}%"></div></div></div>` : ""}</td>
+              <td>${scores(m, task)}</td><td class="num">${m.test_images ?? ""}</td></tr>`;
+    }).join("");
+    const todoRows = todo.map((x) => `<tr class="todo"><td>${esc(x.name)}</td><td>pre-trained (ImageNet)</td>
+              <td colspan="5">not trained yet &middot; <code>${esc(x.command)}</code></td></tr>`).join("");
+    return `<tr class="task-head"><td colspan="7">${TASKS[task]}</td></tr>${rows}${todoRows}`;
+  }).join("");
+
+  const withPlots = models.filter((x) => x.has_plots);
+  $("tabs").innerHTML = withPlots.map((x, i) =>
+    `<button data-i="${i}">${esc(x.name)} &middot; ${x.task === "dr" ? "detection" : "5 grades"}</button>`).join("");
+  const show = (i) => {
+    const x = withPlots[i];
+    $("tabs").querySelectorAll("button").forEach((b) => b.classList.toggle("on", Number(b.dataset.i) === i));
+    const t = Date.now();
+    $("plots").innerHTML = `<img src="/outputs/${x.outputs}/training_curves.png?t=${t}" alt="training curves">
+                            <img src="/outputs/${x.outputs}/confusion_matrix.png?t=${t}" alt="confusion matrix">`;
+  };
+  $("tabs").querySelectorAll("button").forEach((b) => b.addEventListener("click", () => show(Number(b.dataset.i))));
+  if (withPlots.length) show(0);
+}
+
+loadSamples();
+loadModels();
+</script>
+</body>
+</html>

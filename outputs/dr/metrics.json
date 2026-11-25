@@ -1,0 +1,31 @@
+{
+  "task": "dr",
+  "classes": [
+    "No DR",
+    "DR"
+  ],
+  "model": "5-layer CNN",
+  "parameters": 1570594,
+  "image_size": 48,
+  "train_images": 2572,
+  "val_images": 542,
+  "test_images": 548,
+  "epochs": 40,
+  "best_epoch": 35,
+  "val_accuracy": 0.9723,
+  "test_accuracy": 0.9672,
+  "sensitivity": 0.9856,
+  "specificity": 0.9483,
+  "precision": 0.9512,
+  "roc_auc": 0.9932,
+  "confusion_matrix": [
+    [
+      257,
+      14
+    ],
+    [
+      4,
+      273
+    ]
+  ]
+}

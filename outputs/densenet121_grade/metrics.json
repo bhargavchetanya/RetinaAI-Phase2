@@ -1,0 +1,60 @@
+{
+  "task": "grade",
+  "classes": [
+    "No DR",
+    "Mild",
+    "Moderate",
+    "Severe",
+    "Proliferative"
+  ],
+  "model": "DenseNet-121 pre-trained on ImageNet",
+  "arch": "densenet121",
+  "parameters": 6958981,
+  "image_size": 48,
+  "train_images": 2572,
+  "val_images": 542,
+  "test_images": 548,
+  "epochs": 10,
+  "best_epoch": 7,
+  "val_accuracy": 0.8229,
+  "test_accuracy": 0.823,
+  "qwk": 0.8617,
+  "dr_yes_no_accuracy": 0.9617,
+  "confusion_matrix": [
+    [
+      264,
+      6,
+      1,
+      0,
+      0
+    ],
+    [
+      7,
+      25,
+      23,
+      0,
+      0
+    ],
+    [
+      4,
+      6,
+      129,
+      5,
+      8
+    ],
+    [
+      1,
+      1,
+      10,
+      12,
+      4
+    ],
+    [
+      2,
+      3,
+      13,
+      3,
+      21
+    ]
+  ]
+}

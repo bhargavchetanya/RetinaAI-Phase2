@@ -1,0 +1,9 @@
+# Render Blueprint: New + > Blueprint > pick this repo, or create a Web Service with runtime "Docker".
+services:
+  - type: web
+    name: retinaai
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true

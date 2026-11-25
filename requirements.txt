@@ -1,0 +1,10 @@
+numpy>=2.0,<3
+pandas
+opencv-python
+scikit-learn
+torch
+torchvision
+matplotlib
+fastapi
+uvicorn
+python-multipart

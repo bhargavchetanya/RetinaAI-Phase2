@@ -1,0 +1,81 @@
+======================================================================
+ TRAINING DENSENET-121 (PRE-TRAINED ON IMAGENET)  -  No DR / Mild / Moderate / Severe / Proliferative
+======================================================================
+
+Images: 3662 x 48x48x3   device: mps
+Duplicate photos: 131 groups, 139 extra copies (each group is kept in one split)
+Train: 2572   Validation: 542   Test: 548
+  train No DR: 1265  Mild: 260  Moderate: 703  Severe: 136  Proliferative: 208
+  val   No DR: 269  Mild: 55  Moderate: 144  Severe: 29  Proliferative: 45
+  test  No DR: 271  Mild: 55  Moderate: 152  Severe: 28  Proliferative: 42
+
+Loading DenseNet-121 with ImageNet weights (first run downloads 31 MB) ...
+
+Layer                                   Output shape        Parameters
+----------------------------------------------------------------------
+input image                             (3, 48, 48)                  0
+enlarge to 128x128                      (3, 128, 128)                0
+features.conv0: Conv2d                  (64, 64, 64)             9,408
+features.norm0: BatchNorm2d             (64, 64, 64)               128
+features.relu0: ReLU                    (64, 64, 64)                 0
+features.pool0: MaxPool2d               (64, 32, 32)                 0
+features.denseblock1: _DenseBlock       (256, 32, 32)          335,040
+features.transition1: _Transition       (128, 16, 16)           33,280
+features.denseblock2: _DenseBlock       (512, 16, 16)          919,680
+features.transition2: _Transition       (256, 8, 8)            132,096
+features.denseblock3: _DenseBlock       (1024, 8, 8)         2,837,760
+features.transition3: _Transition       (512, 4, 4)            526,336
+features.denseblock4: _DenseBlock       (1024, 4, 4)         2,158,080
+features.norm5: BatchNorm2d             (1024, 4, 4)             2,048
+global avg pool + dropout               (1024,)                      0
+dense (output layer)                    (5,)                     5,125
+----------------------------------------------------------------------
+Total trainable parameters                                   6,958,981
+
+Optimizer: AdamW, one-cycle learning rate (peak 0.0005), batch size 32, 10 epochs, all layers fine-tuned
+
+Epoch  train loss  train acc  val loss  val acc   time
+    1      1.2777     50.39%    0.7832   71.40%    58s  *
+    2      0.8533     72.90%    0.6900   73.25%    52s  *
+    3      0.8188     74.34%    0.6636   76.75%    51s  *
+    4      0.7673     75.70%    0.6114   78.23%    51s  *
+    5      0.7199     78.15%    0.5661   81.37%    51s  *
+    6      0.6701     80.25%    0.5508   78.41%    51s
+    7      0.6326     82.35%    0.5182   82.29%    54s  *
+    8      0.6000     84.45%    0.4969   79.70%    65s
+    9      0.5601     85.69%    0.4857   81.73%    53s
+   10      0.5368     86.28%    0.4991   81.37%    52s
+
+* = best so far. Kept the model from epoch 7 (validation accuracy 82.29%)
+
+======================================================================
+ TEST RESULTS  (548 images DenseNet-121 has never seen)
+======================================================================
+
+Test accuracy : 82.30%
+Quadratic weighted kappa (QWK) : 0.8617
+DR yes/no accuracy (grade 0 vs 1-4): 96.17%
+
+Classification report:
+               precision    recall  f1-score   support
+
+        No DR      0.950     0.974     0.962       271
+         Mild      0.610     0.455     0.521        55
+     Moderate      0.733     0.849     0.787       152
+       Severe      0.600     0.429     0.500        28
+Proliferative      0.636     0.500     0.560        42
+
+     accuracy                          0.823       548
+    macro avg      0.706     0.641     0.666       548
+ weighted avg      0.814     0.823     0.815       548
+
+
+Confusion matrix (rows = actual, columns = predicted):
+                         No DR           Mild       Moderate         Severe  Proliferative
+No DR                      264              6              1              0              0
+Mild                         7             25             23              0              0
+Moderate                     4              6            129              5              8
+Severe                       1              1             10             12              4
+Proliferative                2              3             13              3             21
+
+Saved densenet121_grade.pt and outputs/densenet121_grade/ (training_log.txt, metrics.json, training_curves.png, confusion_matrix.png)
